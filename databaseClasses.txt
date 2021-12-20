@@ -1,0 +1,5 @@
+User = userId, userName
+Developer = User, CompanyId, ProjectId,  
+Company =  compId, compName, compStartDate
+Project = projectId, projectName, projectDescription, companyId
+Task =   taskId, taskName, taskDescription, projectId
