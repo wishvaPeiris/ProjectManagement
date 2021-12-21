@@ -52,8 +52,6 @@ C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagemen
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\ProjectManagementApp.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\ProjectManagementApp.RazorComponent.input.cache
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\App.razor.g.cs
-C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Pages\Counter.razor.g.cs
-C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Pages\FetchData.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
@@ -65,8 +63,6 @@ C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagemen
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\ProjectManagementApp.TagHelpers.output.cache
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\ProjectManagementApp.RazorCoreGenerate.cache
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\App.razor.g.cs
-C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\Counter.razor.g.cs
-C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\FetchData.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Shared\SurveyPrompt.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
@@ -90,3 +86,13 @@ C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagemen
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\ref\ProjectManagementApp.dll
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\ProjectManagementApp.pdb
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\ProjectManagementApp.genruntimeconfig.cache
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Pages\ProjectManagerHome.razor.g.cs
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\ProjectManagerHome.razor.g.cs
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Pages\Login.razor.g.cs
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\Login.razor.g.cs
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Shared\LoginLayout.razor.g.cs
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Shared\LoginLayout.razor.g.cs
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Pages\Company\CreateCompany.razor.g.cs
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\Company\CreateCompany.razor.g.cs
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Pages\Company\CompanyView.razor.g.cs
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\Company\CompanyView.razor.g.cs

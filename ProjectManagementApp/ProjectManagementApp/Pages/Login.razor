@@ -1,0 +1,48 @@
+﻿@layout LoginLayout
+@page "/login"
+@inject NavigationManager NavigationManager
+
+
+
+<div class="main">
+    <h3>Enter login details</h3>
+    <form>
+      <div class="mb-3">
+        <label for="userName" class="form-label">Username</label>
+        <input type="text" class="form-control" id="sampleName" aria-describedby="emailHelp" @bind-value = "userName">
+      </div>
+      <div class="mb-3">
+        <label for="userPassword" class="form-label">Password</label>
+        <input type="password" class="form-control" id="userPassword" @bind-value = "userPassword">
+      </div>
+      <button type="submit" class="btn btn-primary" @onclick="@LoginUser" >Submit</button>
+    </form>
+</div>
+
+<style>
+       input[type=text], input[type=password] {
+          width: 40%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          box-sizing: border-box;
+    }
+
+    .main{
+        margin-left:20%;
+        margin-top:5%;
+    }
+    
+</style>
+@code {
+    public string userName = "";
+    public string userPassword = "";
+
+    private void LoginUser()
+    {
+       
+            NavigationManager.NavigateTo("home");
+
+    }
+}

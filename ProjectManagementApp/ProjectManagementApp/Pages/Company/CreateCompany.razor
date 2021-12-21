@@ -1,0 +1,33 @@
+﻿@page "/company/add"
+@using DataAccess.Model
+@using ProjectManagementApp.Services
+
+@inject ICompanyService CompanyService
+
+<h3>CreateCompany</h3>
+<EditForm Model = "@company" OnValidSubmit="@HandleOnValidSubmit" class="col-7 p-0">
+    <div class="form-group">
+        <label for="company_name">Company Name</label>
+        <input id="company_name" @bind-value = "companyName" class = "form-control" placeholder="abc" />
+    </div>
+    <button @onclick = "submitCompany" class="btn btn-secondary">Add the company</button>
+</EditForm>
+
+
+@code {
+    public Company company = new Company();
+    private string companyName = "";
+    //private List<int> companyDevs = { };
+    private List<int> compnyProject = null;
+    private DateTime createdDate = DateTime.Today;
+
+    public void HandleOnValidSubmit()
+    {
+
+    }
+
+    public void submitCompany()
+    {
+        company = CompanyService.create(company);
+    }
+}

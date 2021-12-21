@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace ProjectManagementApp.Pages
+namespace ProjectManagementApp.Pages.Company
 {
     #line hidden
     using System;
@@ -83,14 +83,21 @@ using ProjectManagementApp.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\FetchData.razor"
-using ProjectManagementApp.Data;
+#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\Company\CreateCompany.razor"
+using DataAccess.Model;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/fetchdata")]
-    public partial class FetchData : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\Company\CreateCompany.razor"
+using ProjectManagementApp.Services;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/company/add")]
+    public partial class CreateCompany : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -98,19 +105,28 @@ using ProjectManagementApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 39 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\FetchData.razor"
+#line 17 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\Company\CreateCompany.razor"
        
-    private WeatherForecast[] forecasts;
+    public Company company = new Company();
+    private string companyName = "";
+    private List<int> companyDevs = null;
+    private List<int> compnyProject = null;
+    private DateTime createdDate = DateTime.Today;
 
-    protected override async Task OnInitializedAsync()
+    public void HandleOnValidSubmit()
     {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+
+    }
+
+    public void submitCompany()
+    {
+        CompanyService.create(company);
     }
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private WeatherForecastService ForecastService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ICompanyService CompanyService { get; set; }
     }
 }
 #pragma warning restore 1591
