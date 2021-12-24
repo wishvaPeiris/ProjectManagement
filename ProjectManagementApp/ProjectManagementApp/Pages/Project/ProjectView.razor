@@ -1,0 +1,63 @@
+﻿@page "/project"
+@inject NavigationManager NavigationManager
+
+<div class="container">
+    <div class="heading">
+        <h3>Projects added in the project Manager</h3>
+        <button class = "btn btn-dark" @onclick = "addNewProject">Add Projects</button>
+    </div><br/>
+    <div class="section1">
+        <h3>List of all the projects</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Project Name</th>
+              <th scope="col">Company Name</th>
+              <th scope="col">No.of Developers</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>twitter</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .container{
+        margin:0px;
+        padding:0px;
+    }
+    .heading{
+        width:100%;
+        display: flex;
+        justify-content: space-between;
+        background-color: lightblue;
+        padding:10px;
+    }
+</style>
+
+@code {
+    private void addNewProject()
+     {
+        NavigationManager.NavigateTo("/project/add");
+     }
+}

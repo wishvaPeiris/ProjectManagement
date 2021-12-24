@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace ProjectManagementApp.Shared
+namespace ProjectManagementApp.Pages.Project
 {
     #line hidden
     using System;
@@ -82,7 +82,22 @@ using ProjectManagementApp.Shared;
 #line default
 #line hidden
 #nullable disable
-    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\Project\CreateProject.razor"
+using DataAccess.Model;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\Project\CreateProject.razor"
+using ProjectManagementApp.Services;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/project/add")]
+    public partial class CreateProject : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -90,16 +105,25 @@ using ProjectManagementApp.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Shared\NavMenu.razor"
+#line 24 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\Project\CreateProject.razor"
        
-    private bool collapseNavMenu = true;
+   /* public Project newProject = new Project();
+    private string pName = "";
+    private string cName = "";
+    private int pId = 0;
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
+    public void HandleOnValidSubmit()
     {
-        collapseNavMenu = !collapseNavMenu;
+
     }
+
+    public void submitCompany()
+    {
+        newProject.projectName = pName;
+        newProject.companyProjectId = pId;        
+        newProject = ProjectService.create(newProject);
+    }
+    */
 
 #line default
 #line hidden

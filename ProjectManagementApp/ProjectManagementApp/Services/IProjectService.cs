@@ -6,13 +6,13 @@ namespace ProjectManagementApp.Services
     public interface IProjectService
     {
         //create project method
-        Project create(Project company);
+        Project create(Project project);
 
         //read project method
         //get project one
         Project Get(int id);
         //get all project
-        List<Project> listOfCompanies();
+        List<Project> listOfProjects();
 
         //update project method
         Project Upate(Project company);

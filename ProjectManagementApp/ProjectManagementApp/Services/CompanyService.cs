@@ -17,11 +17,10 @@ namespace ProjectManagementApp.Services
 
         public Company create(Company company)
         {
-            if (company == null)
+            if (company != null)
             {
-                System.Console.WriteLine("hello world its hitting this");
                _db.companies.Add(company);
-               //_db.SaveChanges();
+               _db.SaveChanges();
             }
 
             return company;

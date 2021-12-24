@@ -1,13 +1,26 @@
-﻿using DataAccess.Model;
+﻿using DataAccess;
+using DataAccess.Model;
 using System.Collections.Generic;
 
 namespace ProjectManagementApp.Services
 {
     public class ProjectService : IProjectService
     {
-        public Project create(Project company)
+        private readonly ApplicationDbContext _db;
+
+        public ProjectService(ApplicationDbContext db)
         {
-            throw new System.NotImplementedException();
+            _db = db;
+        }
+        public Project create(Project project)
+        {
+            if (project != null)
+            {
+                _db.projects.Add(project);
+                _db.SaveChanges();
+            }
+
+            return project;
         }
 
         public void Delete(int id)
@@ -20,7 +33,7 @@ namespace ProjectManagementApp.Services
             throw new System.NotImplementedException();
         }
 
-        public List<Project> listOfCompanies()
+        public List<Project> listOfProjects()
         {
             throw new System.NotImplementedException();
         }
