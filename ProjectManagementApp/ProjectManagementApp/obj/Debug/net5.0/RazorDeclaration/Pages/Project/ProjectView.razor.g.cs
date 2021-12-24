@@ -94,9 +94,9 @@ using ProjectManagementApp.Shared;
 #line 58 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\Project\ProjectView.razor"
        
     private void addNewProject()
-     {
+    {
         NavigationManager.NavigateTo("/project/add");
-     }
+    }
 
 #line default
 #line hidden

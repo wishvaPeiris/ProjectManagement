@@ -32,6 +32,8 @@ namespace ProjectManagementApp
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<ICompanyService, CompanyService>();
+            services.AddScoped<IProjectService, ProjectService>();
+            services.AddScoped<IUser, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

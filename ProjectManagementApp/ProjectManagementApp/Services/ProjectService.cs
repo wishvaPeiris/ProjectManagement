@@ -1,6 +1,7 @@
 ﻿using DataAccess;
 using DataAccess.Model;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ProjectManagementApp.Services
 {
@@ -35,7 +36,7 @@ namespace ProjectManagementApp.Services
 
         public List<Project> listOfProjects()
         {
-            throw new System.NotImplementedException();
+            return _db.projects.ToList();
         }
 
         public Project Upate(Project company)

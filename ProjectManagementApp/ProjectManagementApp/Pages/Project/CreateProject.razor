@@ -1,42 +1,58 @@
 ﻿@page "/project/add"
+@using DataAccess
 @using DataAccess.Model
 @using ProjectManagementApp.Services
-
+@inject ICompanyService companyService
+@inject IProjectService projectService
 
 
 
 <h3>CreateProject</h3>
-<EditForm class="col-7 p-0">
+<EditForm Model=@newProject class="col-7 p-0">
     <div class="form-group">
         <label for="company_name">Project Name</label>
-        <input id="company_name"  class = "form-control" placeholder="abc" />
+        <input id="company_name"  class = "form-control" @bind-value = "projectName" placeholder="abc" />
+    </div>
+    <div class="form-group">
+        <label for="company_description">Project Description</label>
+        <textarea id="company_descriptiopn" @bind="projectDescription" @bind:event="oninput" class = "form-control" />
     </div>
     <div class="form-group">
         <label for="company_name">Select the company name</label>
-        <select id="companies" name="Companies">
-                <option value="MX">Mexico</option>
-                <option value="MX">Mexico</option>
+        <select id="companies" name="Companies" @onchange = "onSelectedItem" >
+            @foreach (var item in listOfCompanies)
+           {
+             <option value="@item.Id">@item.CompanyName</option>
+           }
         </select>
     </div>
-    <button class="btn btn-secondary">Add the company</button>
+    <button class="btn btn-secondary" @onclick = "@submitProject">Add new project</button>
 </EditForm>
 
+@projectDescription
+
 @code {
-   /* public Project newProject = new Project();
-    private string pName = "";
-    private string cName = "";
-    private int pId = 0;
+    public Project newProject = new Project();
+    private string selectedCompany = "";
+    private string projectName = "";
+    public string projectDescription { get; set; } = String.Empty;
+    List<Company> listOfCompanies = new List<Company>();
 
-    public void HandleOnValidSubmit()
+    protected async override Task OnInitializedAsync()
     {
-
+        listOfCompanies = companyService.listOfCompanies();
     }
 
-    public void submitCompany()
+    public void onSelectedItem(ChangeEventArgs e)
     {
-        newProject.projectName = pName;
-        newProject.companyProjectId = pId;        
-        newProject = ProjectService.create(newProject);
+        selectedCompany = e.Value.ToString();
     }
-    */
+
+    public void submitProject()
+    {
+        newProject.projectName = projectName;
+        newProject.projectDescription = projectDescription;
+        newProject.companyProjectId = Int16.Parse(selectedCompany);
+        newProject = projectService.create(newProject);
+    }
 }

@@ -84,13 +84,20 @@ using ProjectManagementApp.Shared;
 #nullable disable
 #nullable restore
 #line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\Project\CreateProject.razor"
-using DataAccess.Model;
+using DataAccess;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\Project\CreateProject.razor"
+using DataAccess.Model;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\Project\CreateProject.razor"
 using ProjectManagementApp.Services;
 
 #line default
@@ -105,29 +112,37 @@ using ProjectManagementApp.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 24 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\Project\CreateProject.razor"
+#line 34 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\Project\CreateProject.razor"
        
-   /* public Project newProject = new Project();
-    private string pName = "";
-    private string cName = "";
-    private int pId = 0;
+    public Project newProject = new Project();
+    private string selectedCompany = "";
+    private string projectName = "";
+    public string projectDescription { get; set; } = String.Empty;
+    List<Company> listOfCompanies = new List<Company>();
 
-    public void HandleOnValidSubmit()
+    protected async override Task OnInitializedAsync()
     {
-
+        listOfCompanies = companyService.listOfCompanies();
     }
 
-    public void submitCompany()
+    public void onSelectedItem(ChangeEventArgs e)
     {
-        newProject.projectName = pName;
-        newProject.companyProjectId = pId;        
-        newProject = ProjectService.create(newProject);
+        selectedCompany = e.Value.ToString();
     }
-    */
+
+    public void submitProject()
+    {
+        newProject.projectName = projectName;
+        newProject.projectDescription = projectDescription;
+        newProject.companyProjectId = Int16.Parse(selectedCompany);
+        newProject = projectService.create(newProject);
+    }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IProjectService projectService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ICompanyService companyService { get; set; }
     }
 }
 #pragma warning restore 1591

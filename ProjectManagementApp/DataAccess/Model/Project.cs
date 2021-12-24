@@ -10,6 +10,7 @@ namespace DataAccess.Model
     {
         public int projectId { get; set; }
         public string projectName { get; set; }
+        public string projectDescription { get; set; }  
         public int companyProjectId { get; set; }
 
         public Company companyProject { get; set; }
