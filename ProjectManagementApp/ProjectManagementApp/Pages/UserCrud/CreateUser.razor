@@ -1,0 +1,118 @@
+﻿@page "/user/add"
+@using DataAccess
+@using DataAccess.Model
+@using ProjectManagementApp.Services
+@inject ICompanyService companyService
+@inject IProjectService projectService
+@inject IUser userService
+
+<h3>CreateUser</h3>
+<EditForm Model = "@user" OnValidSubmit="@HandleOnValidSubmit" class="col-7 p-0">
+    <div class="form-group">
+        <label for="user_name">Username</label>
+        <input id="user_name" class = "form-control" placeholder="alex@123" @bind-value = "userName" />
+    </div>
+    <div class="form-group">
+        <label for="user_email">User Email</label>
+        <input id="user_email" type="email" class = "form-control" placeholder="alex123@gmail.com" @bind-value = "userEmail" />
+    </div>
+    <div class="form-group">
+        <label for="user_contact">User Contact</label>
+        <input id="user_contact" class = "form-control" placeholder="0713830606" @bind-value = "userContact" />
+    </div>
+     <div class="form-group">
+        <label for="company_name">Select the user type : </label>
+        <select id="userTypes" name="userTypes" value="@selectedUserType" @onchange = "onSelectedItemUser" >
+            <option value="1">Admin</option>
+            <option value="2">Developer</option>
+        </select>
+     </div>
+     <div class="form-group">
+        <label for="company_name">Select the company name</label>
+        <select id="companies" disabled="@isDisabled" value="@selectedCompany" name="Companies" @onchange = "onSelectedItemCompanies" >
+            @foreach (var item in listOfCompanies)
+           {
+             <option value="@item.Id">@item.CompanyName</option>
+           }
+        </select>
+    </div>
+     <div class="form-group">
+        <label for="project_name">Select the project assigned</label>
+        <select id="projects" disabled="@isDisabled" value="@selectedProject" name="Projects" @onchange = "onSelectedItemProject" >
+            @foreach (var item in listOfProjects)
+           {
+             <option value="@item.projectId">@item.projectName</option>
+           }
+        </select>
+    </div>
+    <button @onclick = "submitUser" class="btn btn-secondary">Add the User</button>
+</EditForm>
+
+@code {
+    public User user = new User();
+    public Developer developer = new Developer();
+    private string userName = "";
+    private string userEmail = "";
+    private string userContact = "";
+    private string selectedUserType = "1";
+    private string selectedCompany = "1";
+    private string selectedProject = "1";
+    private bool isDisabled = true;
+    List<Company> listOfCompanies = new List<Company>();
+    List<Project> listOfProjects = new List<Project>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        listOfCompanies = companyService.listOfCompanies();
+        listOfProjects = projectService.listOfProjects();
+    }
+
+    public void onSelectedItemUser(ChangeEventArgs e)
+    {
+        selectedUserType = e.Value.ToString();
+        if(Int16.Parse(selectedUserType) == 2)
+        {
+            isDisabled = false;
+        }
+        else
+        {
+            isDisabled = true;
+        }
+    }
+
+    public void onSelectedItemCompanies(ChangeEventArgs e)
+    {
+        selectedCompany = e.Value.ToString();
+    }
+
+    public void onSelectedItemProject(ChangeEventArgs e)
+    {
+        selectedProject = e.Value.ToString();
+    }
+
+    public void HandleOnValidSubmit()
+    {
+
+    }
+
+    public void submitUser()
+    {
+        Console.WriteLine("the value : " + Int16.Parse(selectedUserType));
+        if(Int16.Parse(selectedUserType) == 2)
+        {
+            developer.userName = userName;
+            developer.userEmail = userEmail;
+            developer.userContactNo = userContact;
+            developer.companyId = Int16.Parse(selectedCompany);
+            developer.projectId = Int16.Parse(selectedProject);
+            userService.createDev(developer);
+        }
+        else
+        {
+            user.userName = userName;
+            user.userEmail = userEmail;
+            user.userContactNo = userContact;
+            userService.create(user);
+        }
+    }
+}

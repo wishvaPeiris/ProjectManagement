@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace ProjectManagementApp.Pages.Company
+namespace ProjectManagementApp.Pages.User
 {
     #line hidden
     using System;
@@ -82,51 +82,13 @@ using ProjectManagementApp.Shared;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\Company\CreateCompany.razor"
-using DataAccess.Model;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\Company\CreateCompany.razor"
-using ProjectManagementApp.Services;
-
-#line default
-#line hidden
-#nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/company/add")]
-    public partial class CreateCompany : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class UserView : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 17 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\Company\CreateCompany.razor"
-       
-    public Company company = new Company();
-    private string cName = "";
-    private DateTime createdDate = DateTime.Today;
-
-    public void HandleOnValidSubmit()
-    {
-
-    }
-
-    public void submitCompany()
-    {
-        company.CompanyName = cName;
-        company.CreatedDate = createdDate;        
-        company = CompanyService.create(company);
-    }
-
-#line default
-#line hidden
-#nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ICompanyService CompanyService { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace ProjectManagementApp.Shared
+namespace ProjectManagementApp.Pages.ProjectCrud
 {
     #line hidden
     using System;
@@ -82,7 +82,29 @@ using ProjectManagementApp.Shared;
 #line default
 #line hidden
 #nullable disable
-    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\ProjectCrud\CreateProject.razor"
+using DataAccess;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\ProjectCrud\CreateProject.razor"
+using DataAccess.Model;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\ProjectCrud\CreateProject.razor"
+using ProjectManagementApp.Services;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/project/add")]
+    public partial class CreateProject : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -90,20 +112,37 @@ using ProjectManagementApp.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 39 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Shared\NavMenu.razor"
+#line 34 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\ProjectCrud\CreateProject.razor"
        
-    private bool collapseNavMenu = true;
+    public Project newProject = new Project();
+    private string selectedCompany = "1";
+    private string projectName = "";
+    public string projectDescription { get; set; } = String.Empty;
+    List<Company> listOfCompanies = new List<Company>();
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
+    protected async override Task OnInitializedAsync()
     {
-        collapseNavMenu = !collapseNavMenu;
+        listOfCompanies = companyService.listOfCompanies();
+    }
+
+    public void onSelectedItem(ChangeEventArgs e)
+    {
+        selectedCompany = e.Value.ToString();
+    }
+
+    public void submitProject()
+    {
+        newProject.projectName = projectName;
+        newProject.projectDescription = projectDescription;
+        newProject.companyProjectId = Int16.Parse(selectedCompany);
+        newProject = projectService.create(newProject);
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IProjectService projectService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ICompanyService companyService { get; set; }
     }
 }
 #pragma warning restore 1591

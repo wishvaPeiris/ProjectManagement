@@ -6,16 +6,17 @@ namespace ProjectManagementApp.Services
     public interface IUser
     {
         //create project method
-        User create(User company);
-
+        User create(User user);
+        Developer createDev(Developer developer);
         //read project method
         //get project one
         User Get(int id);
         //get all project
-        List<User> listOfCompanies();
-
+        List<User> listOfUsers();
+        //get all developers for that specific company id
+        List<Developer> listOfDevelopersInCompany(int companyId);
         //update project method
-        User Upate(User company);
+        User Upate(User user);
 
         //delete project method
         void Delete(int id);

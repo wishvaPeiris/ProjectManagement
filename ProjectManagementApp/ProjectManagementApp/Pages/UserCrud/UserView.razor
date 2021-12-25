@@ -1,0 +1,13 @@
+﻿@page "/user"
+@inject NavigationManager NavigationManager
+<h3>UserView</h3>
+<button class = "btn btn-dark" @onclick = "addNewUser">Add user</button>
+
+@code {
+
+    public void addNewUser()
+    {
+        NavigationManager.NavigateTo("/user/add");
+    }
+
+}

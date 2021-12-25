@@ -13,7 +13,7 @@ namespace ProjectManagementApp.Services
         Project Get(int id);
         //get all project
         List<Project> listOfProjects();
-
+        List<Project> listOfProjectsToCompanyIdAsync(int comp_id);
         //update project method
         Project Upate(Project company);
 

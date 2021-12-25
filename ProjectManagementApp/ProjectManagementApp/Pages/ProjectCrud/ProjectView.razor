@@ -1,21 +1,19 @@
-﻿@page "/company"
+﻿@page "/project"
 @inject NavigationManager NavigationManager
-
 
 <div class="container">
     <div class="heading">
-        <h3>Registered Companies in ProjectManager</h3>
-        <button class = "btn btn-dark" @onclick = "addNewCompany">Add companies</button>
+        <h3>Projects added in the project Manager</h3>
+        <button class = "btn btn-dark" @onclick = "addNewProject">Add Projects</button>
     </div><br/>
     <div class="section1">
-        <h3>List of Companies</h3>
+        <h3>List of all the projects</h3>
         <table class="table">
           <thead>
             <tr>
               <th scope="col">No</th>
+              <th scope="col">Project Name</th>
               <th scope="col">Company Name</th>
-              <th scope="col">Created Date</th>
-              <th scope="col">No.of Projects</th>
               <th scope="col">No.of Developers</th>
             </tr>
           </thead>
@@ -25,20 +23,17 @@
               <td>Mark</td>
               <td>Otto</td>
               <td>mdo</td>
-              <td>mdo</td>
             </tr>
             <tr>
               <th scope="row">2</th>
               <td>Jacob</td>
               <td>Thornton</td>
               <td>fat</td>
-              <td>fat</td>
             </tr>
             <tr>
               <th scope="row">3</th>
               <td>Larry</td>
               <td>the Bird</td>
-              <td>twitter</td>
               <td>twitter</td>
             </tr>
           </tbody>
@@ -60,10 +55,17 @@
     }
 </style>
 
-
 @code {
-    private void addNewCompany()
+    private void addNewProject()
     {
-        NavigationManager.NavigateTo("/company/add");
+        NavigationManager.NavigateTo("/project/add");
     }
 }
+
+
+
+
+
+
+
+

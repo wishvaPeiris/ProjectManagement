@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace ProjectManagementApp.Shared
+namespace ProjectManagementApp.Pages.CompanyCrud
 {
     #line hidden
     using System;
@@ -82,7 +82,22 @@ using ProjectManagementApp.Shared;
 #line default
 #line hidden
 #nullable disable
-    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CreateCompany.razor"
+using DataAccess.Model;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CreateCompany.razor"
+using ProjectManagementApp.Services;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/company/add")]
+    public partial class CreateCompany : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -90,20 +105,28 @@ using ProjectManagementApp.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 39 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Shared\NavMenu.razor"
+#line 17 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CreateCompany.razor"
        
-    private bool collapseNavMenu = true;
+    public Company company = new Company();
+    private string cName = "";
+    private DateTime createdDate = DateTime.Today;
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
+    public void HandleOnValidSubmit()
     {
-        collapseNavMenu = !collapseNavMenu;
+
+    }
+
+    public void submitCompany()
+    {
+        company.CompanyName = cName;
+        company.CreatedDate = createdDate;        
+        company = CompanyService.create(company);
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ICompanyService CompanyService { get; set; }
     }
 }
 #pragma warning restore 1591

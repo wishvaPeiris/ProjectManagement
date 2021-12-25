@@ -1,0 +1,88 @@
+﻿@page "/company"
+@using DataAccess.Model
+@using ProjectManagementApp.Services
+@using DataAccess;
+@inject NavigationManager NavigationManager
+@inject ICompanyService companyService
+@inject IProjectService projectService
+@inject IUser userService
+
+
+<div class="container">
+    <div class="heading">
+        <h3>Registered Companies in ProjectManager</h3>
+        <button class = "btn btn-dark" @onclick = "addNewCompany">Add companies</button>
+    </div><br/>
+    <div class="section1">
+        <h3>List of Companies</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Company Name</th>
+              <th scope="col">Created Date</th>
+              <th scope="col">No.of Projects</th>
+              <th scope="col">No.of Developers</th>
+            </tr>
+          </thead>
+          <tbody>
+              @foreach (var item in listOfCompanies)
+             {
+
+                  <tr>
+                      <th scope="row">@item.Id</th>
+                      <td>@item.CompanyName</td>
+                      <td>@item.CreatedDate</td>
+                      <td>@projectCount[count]</td>
+                      <td>@userCount[count]</td>
+                    </tr>
+
+                    count++;
+                }
+          </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .container{
+        margin:0px;
+        padding:0px;
+    }
+    .heading{
+        width:100%;
+        display: flex;
+        justify-content: space-between;
+        background-color: lightblue;
+        padding:10px;
+    }
+</style>
+
+
+@code {
+    List<Project> projectList = new List<Project>();
+    int count = 0;
+    List<Developer> userList = new List<Developer>();
+    List<Company> listOfCompanies = new List<Company>();
+    List<Object> finalList = new List<Object>();
+    List<int> projectCount = new List<int>();
+    List<int> userCount = new List<int>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        listOfCompanies = companyService.listOfCompanies();
+
+        foreach (var item in listOfCompanies)
+        {
+            projectList = projectService.listOfProjectsToCompanyIdAsync(item.Id);
+            userList = userService.listOfDevelopersInCompany(item.Id);
+            projectCount.Add(projectList.Count());
+            userCount.Add(userList.Count());
+        }
+    }
+
+    private void addNewCompany()
+    {
+        NavigationManager.NavigateTo("/company/add");
+    }
+}

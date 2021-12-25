@@ -1,7 +1,9 @@
 ﻿using DataAccess;
 using DataAccess.Model;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ProjectManagementApp.Services
 {
@@ -37,6 +39,21 @@ namespace ProjectManagementApp.Services
         public List<Project> listOfProjects()
         {
             return _db.projects.ToList();
+        }
+
+        public List<Project> listOfProjectsToCompanyIdAsync(int comp_id)
+        {
+            List<Project> list = new List<Project>();
+
+            foreach (var project in _db.projects)
+            {
+                if(project.companyProjectId == comp_id)
+                {
+                    list.Add(project);
+                }
+            }
+
+            return list;
         }
 
         public Project Upate(Project company)
