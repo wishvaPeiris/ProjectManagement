@@ -112,15 +112,11 @@ using DataAccess;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 62 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyView.razor"
+#line 61 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyView.razor"
        
     List<Project> projectList = new List<Project>();
-    int count = 0;
     List<Developer> userList = new List<Developer>();
     List<Company> listOfCompanies = new List<Company>();
-    List<Object> finalList = new List<Object>();
-    List<int> projectCount = new List<int>();
-    List<int> userCount = new List<int>();
 
     protected async override Task OnInitializedAsync()
     {
@@ -130,8 +126,9 @@ using DataAccess;
         {
             projectList = projectService.listOfProjectsToCompanyIdAsync(item.Id);
             userList = userService.listOfDevelopersInCompany(item.Id);
-            projectCount.Add(projectList.Count());
-            userCount.Add(userList.Count());
+            item.companyProjects = projectList;
+            item.companyDevs = userList;
+
         }
     }
 

@@ -1,4 +1,9 @@
 ﻿@page "/project"
+@using ProjectManagementApp.Services
+@inject ICompanyService companyService
+@inject IProjectService projectService
+@inject IUser userService
+
 @inject NavigationManager NavigationManager
 
 <div class="container">
@@ -56,6 +61,13 @@
 </style>
 
 @code {
+
+
+
+
+
+
+
     private void addNewProject()
     {
         NavigationManager.NavigateTo("/project/add");

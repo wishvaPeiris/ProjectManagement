@@ -33,12 +33,11 @@
                       <th scope="row">@item.Id</th>
                       <td>@item.CompanyName</td>
                       <td>@item.CreatedDate</td>
-                      <td>@projectCount[count]</td>
-                      <td>@userCount[count]</td>
+                      <td>@item.companyProjects.Count()</td>
+                      <td>@item.companyDevs.Count()</td>
                     </tr>
 
-                    count++;
-                }
+             }
           </tbody>
         </table>
     </div>
@@ -61,12 +60,8 @@
 
 @code {
     List<Project> projectList = new List<Project>();
-    int count = 0;
     List<Developer> userList = new List<Developer>();
     List<Company> listOfCompanies = new List<Company>();
-    List<Object> finalList = new List<Object>();
-    List<int> projectCount = new List<int>();
-    List<int> userCount = new List<int>();
 
     protected async override Task OnInitializedAsync()
     {
@@ -76,8 +71,9 @@
         {
             projectList = projectService.listOfProjectsToCompanyIdAsync(item.Id);
             userList = userService.listOfDevelopersInCompany(item.Id);
-            projectCount.Add(projectList.Count());
-            userCount.Add(userList.Count());
+            item.companyProjects = projectList;
+            item.companyDevs = userList;
+
         }
     }
 
