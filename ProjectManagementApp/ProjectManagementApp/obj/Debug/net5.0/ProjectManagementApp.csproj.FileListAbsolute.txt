@@ -104,3 +104,6 @@ C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagemen
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\CompanyCrud\CompanyView.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\ProjectCrud\CreateProject.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\ProjectCrud\ProjectView.razor.g.cs
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\bin\Debug\net5.0\Blazored.Toast.dll
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Pages\CompanyCrud\EditCompany.razor.g.cs
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\CompanyCrud\EditCompany.razor.g.cs

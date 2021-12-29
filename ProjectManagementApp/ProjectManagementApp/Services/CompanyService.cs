@@ -15,15 +15,16 @@ namespace ProjectManagementApp.Services
             _db = db;    
         }
 
-        public Company create(Company company)
+        public bool create(Company company)
         {
             if (company != null)
             {
                _db.companies.Add(company);
                _db.SaveChanges();
+                return true;
             }
 
-            return company;
+            return false;
         }
 
         public void Delete(int id)
@@ -33,7 +34,7 @@ namespace ProjectManagementApp.Services
 
         public Company Get(int id)
         {
-            throw new System.NotImplementedException();
+            return _db.companies.Find(id);
         }
 
         public List<Company> listOfCompanies()
@@ -44,10 +45,9 @@ namespace ProjectManagementApp.Services
         public Company Upate(Company company)
         {
             var dbCompany = _db.companies.Find(company.Id);
-            if(dbCompany == null)
+            if(dbCompany != null)
             {
                 dbCompany = company;
-
                 _db.SaveChanges();  
                 
             }

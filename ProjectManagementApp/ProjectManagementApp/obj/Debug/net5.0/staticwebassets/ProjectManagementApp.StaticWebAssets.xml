@@ -1,3 +1,4 @@
 ﻿<StaticWebAssets Version="1.0">
   <ContentRoot BasePath="/" Path="C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="_content/Blazored.Toast" Path="C:\Users\User 01\.nuget\packages\blazored.toast\3.1.2\build\..\staticwebassets\" />
 </StaticWebAssets>

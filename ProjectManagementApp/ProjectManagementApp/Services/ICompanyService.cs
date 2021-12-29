@@ -6,7 +6,7 @@ namespace ProjectManagementApp.Services
     public interface ICompanyService
     {
         //create company method
-        Company create(Company company);
+        bool create(Company company);
 
         //read company method
         //get company one

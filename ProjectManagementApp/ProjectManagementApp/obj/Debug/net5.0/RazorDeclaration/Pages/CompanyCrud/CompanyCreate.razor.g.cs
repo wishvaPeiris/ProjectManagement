@@ -83,6 +83,20 @@ using ProjectManagementApp.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 11 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+using Blazored.Toast;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+using Blazored.Toast.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyCreate.razor"
 using DataAccess.Model;
 
@@ -105,9 +119,10 @@ using ProjectManagementApp.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 17 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyCreate.razor"
+#line 18 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyCreate.razor"
        
     public Company company = new Company();
+    bool createCompany = false;
     private string cName = "";
     private DateTime createdDate = DateTime.Today;
 
@@ -119,14 +134,22 @@ using ProjectManagementApp.Services;
     public void submitCompany()
     {
         company.CompanyName = cName;
-        company.CreatedDate = createdDate;        
-        company = CompanyService.create(company);
+        company.CreatedDate = createdDate;
+        createCompany = CompanyService.create(company);
+        if(createCompany){
+            
+            ToastService.ShowSuccess("Company is added successfully", "Success!");
+        }
+        else{
+            ToastService.ShowError("Something went wrong when creating the Company", "Error");
+        }
     }
 
 #line default
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ICompanyService CompanyService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToastService ToastService { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -1,12 +1,98 @@
 ﻿@page "/user"
+@using DataAccess
+@using DataAccess.Model
+@using Microsoft.EntityFrameworkCore
+@using ProjectManagementApp.Services
+@inject ICompanyService companyService
+@inject IProjectService projectService
+@inject IUser userService
 @inject NavigationManager NavigationManager
 <h3>UserView</h3>
 <button class = "btn btn-dark" @onclick = "addNewUser">Add user</button>
 
+<div class="container">
+    <div class="section1">
+        <h3>List of all the projects</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">User Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Contact No</th>
+              <th scope="col">User Company</th>
+              <th scope="col">User Projects Count</th>
+            </tr>
+          </thead>
+          <tbody>
+                @foreach (var item in userList)
+                {
+                   <tr>
+                      <th scope="row">@item.userId</th>
+                      <td>@item.userName</td>
+                      <td>@item.userEmail</td>
+                      <td>@item.userContactNo</td>
+                      <td>@companyName[userList.IndexOf(item)]</td>
+                      <td>
+                          <table>
+                              @{var projectLinqQuery = from value in projectList where value.projectId == item.projectId select new {item.userId,value.projectName };}
+                              @foreach (var projName in projectLinqQuery)
+                             {
+                                 if(projName.userId == item.userId){
+                                   <tr>
+                                     <td>@projName.projectName</td>
+                                   </tr>
+                                 }
+                             }
+                          </table>
+                      </td>
+                    </tr>
+               }
+                  
+
+          </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .container{
+        margin:0px;
+        padding:0px;
+    }
+    .heading{
+        width:100%;
+        display: flex;
+        justify-content: space-between;
+        background-color: lightblue;
+        padding:10px;
+    }
+</style>
+
 @code {
+    public int count = 0;
+    List<Project> projectList = new List<Project>();
+    List<Developer> userList = new List<Developer>();
+    List<Company> listOfCompanies = new List<Company>();
+    List<string> companyName = new List<string>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        listOfCompanies = companyService.listOfCompanies();
+        projectList = projectService.listOfProjects();
+        userList = userService.listOfUsers();
+
+        foreach (var item in userList)
+        {
+            var companyLinqQuery = from value in listOfCompanies where value.Id == item.companyId select value.CompanyName.ToString();
+            companyName.Add(companyLinqQuery.FirstOrDefault());  
+        }
+    }
 
     public void addNewUser()
     {
+
+
         NavigationManager.NavigateTo("/user/add");
     }
 

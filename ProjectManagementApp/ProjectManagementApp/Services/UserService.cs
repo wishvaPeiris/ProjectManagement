@@ -1,6 +1,7 @@
 ﻿using DataAccess;
 using DataAccess.Model;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ProjectManagementApp.Services
 {
@@ -58,9 +59,24 @@ namespace ProjectManagementApp.Services
             return list;
         }
 
-        public List<User> listOfUsers()
+        public List<Developer> listOfDevelopersInProject(int projectId)
         {
-            throw new System.NotImplementedException();
+            List<Developer> list = new List<Developer>();
+
+            foreach (var developer in _db.developers)
+            {
+                if (developer.projectId == projectId)
+                {
+                    list.Add(developer);
+                }
+            }
+
+            return list;
+        }
+
+        public List<Developer> listOfUsers()
+        {
+            return _db.developers.ToList();
         }
 
         public User Upate(User user)

@@ -82,6 +82,34 @@ using ProjectManagementApp.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+using Blazored.Toast;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+using Blazored.Toast.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\ProjectCrud\ProjectView.razor"
+using DataAccess.Model;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\ProjectCrud\ProjectView.razor"
+using ProjectManagementApp.Services;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/project")]
     public partial class ProjectView : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -91,8 +119,35 @@ using ProjectManagementApp.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 58 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\ProjectCrud\ProjectView.razor"
+#line 55 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\ProjectCrud\ProjectView.razor"
        
+    public int count = 0;
+    List<Project> projectList = new List<Project>();
+    List<Developer> userList = new List<Developer>();
+    List<Company> listOfCompanies = new List<Company>();
+    List<string> companyName = new List<string>();
+
+
+
+    protected async override Task OnInitializedAsync()
+    {
+        listOfCompanies = companyService.listOfCompanies();
+        projectList = projectService.listOfProjects();
+
+
+        foreach (var item in projectList)
+        {
+            userList = userService.listOfDevelopersInProject(item.projectId);
+            item.developers = userList;
+            //getting the company name
+            var myLinqQuery = from value in listOfCompanies where value.Id == item.companyProjectId select value.CompanyName.ToString();
+            companyName.Add(myLinqQuery.FirstOrDefault());
+        }
+    }
+
+
+
+
     private void addNewProject()
     {
         NavigationManager.NavigateTo("/project/add");
@@ -102,6 +157,9 @@ using ProjectManagementApp.Shared;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUser userService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IProjectService projectService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ICompanyService companyService { get; set; }
     }
 }
 #pragma warning restore 1591

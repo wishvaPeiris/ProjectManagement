@@ -1,4 +1,5 @@
 ﻿@page "/project"
+@using DataAccess.Model
 @using ProjectManagementApp.Services
 @inject ICompanyService companyService
 @inject IProjectService projectService
@@ -23,24 +24,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>twitter</td>
-            </tr>
+               @foreach (var item in projectList)
+             {
+                  <tr>
+                      <th scope="row">@item.projectId</th>
+                      <td>@item.projectName</td>
+                      <td>@companyName[projectList.IndexOf(item)]</td>
+                      <td>@item.developers.Count()</td>
+                    </tr>
+             }
           </tbody>
         </table>
     </div>
@@ -61,9 +53,29 @@
 </style>
 
 @code {
+    public int count = 0;
+    List<Project> projectList = new List<Project>();
+    List<Developer> userList = new List<Developer>();
+    List<Company> listOfCompanies = new List<Company>();
+    List<string> companyName = new List<string>();
 
 
 
+    protected async override Task OnInitializedAsync()
+    {
+        listOfCompanies = companyService.listOfCompanies();
+        projectList = projectService.listOfProjects();
+
+
+        foreach (var item in projectList)
+        {
+            userList = userService.listOfDevelopersInProject(item.projectId);
+            item.developers = userList;
+            //getting the company name
+            var myLinqQuery = from value in listOfCompanies where value.Id == item.companyProjectId select value.CompanyName.ToString();
+            companyName.Add(myLinqQuery.FirstOrDefault());
+        }
+    }
 
 
 

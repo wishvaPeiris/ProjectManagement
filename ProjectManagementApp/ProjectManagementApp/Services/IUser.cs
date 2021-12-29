@@ -12,9 +12,10 @@ namespace ProjectManagementApp.Services
         //get project one
         User Get(int id);
         //get all project
-        List<User> listOfUsers();
+        List<Developer> listOfUsers();
         //get all developers for that specific company id
         List<Developer> listOfDevelopersInCompany(int companyId);
+        List<Developer> listOfDevelopersInProject(int projectId);
         //update project method
         User Upate(User user);
 

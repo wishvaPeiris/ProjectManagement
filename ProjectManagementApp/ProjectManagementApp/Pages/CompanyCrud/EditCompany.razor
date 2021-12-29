@@ -1,0 +1,64 @@
+﻿@using DataAccess.Model
+@using ProjectManagementApp.Services
+@inject ICompanyService CompanyService
+@inject IToastService ToastService
+
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Company</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick = "@ModalCancel"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Intial Company Name:</label>
+            <input type="text" class="form-control" id="recipient-name" disabled=true placeholder="@companyName">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">New Company name:</label>
+            <input type="text" class="form-control" id="recipient-name" placeholder="Company Name" @bind-value = "@newCompanyName">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="@ModalCancel">Close</button>
+        <button type="button" class="btn btn-primary" @onclick="@ModalOk">Save Company</button>
+      </div>
+    </div>
+  </div>
+</div>
+@code {
+    public Company company = new Company();
+    [Parameter]
+    public int IntialCompanyId { get; set; }
+    [Parameter]
+    public string companyName { get; set; }
+    public string newCompanyName { get; set; }
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        company = CompanyService.Get(IntialCompanyId);
+        company.CompanyName = newCompanyName;
+
+        try
+        {
+            company = CompanyService.Upate(company);
+            ToastService.ShowSuccess("Company is updated successfully", "Success!");
+        }
+        catch (Exception)
+        {
+            ToastService.ShowError("Something went wrong when updating the Company", "Error");
+        }
+         return OnClose.InvokeAsync(true);
+    }
+}

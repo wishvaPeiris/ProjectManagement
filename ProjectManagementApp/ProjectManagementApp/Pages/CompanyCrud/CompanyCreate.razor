@@ -1,6 +1,7 @@
 ﻿@page "/company/add"
 @using DataAccess.Model
 @using ProjectManagementApp.Services
+@inject IToastService ToastService
 
 @inject ICompanyService CompanyService
 
@@ -16,6 +17,7 @@
 
 @code {
     public Company company = new Company();
+    bool createCompany = false;
     private string cName = "";
     private DateTime createdDate = DateTime.Today;
 
@@ -27,7 +29,14 @@
     public void submitCompany()
     {
         company.CompanyName = cName;
-        company.CreatedDate = createdDate;        
-        company = CompanyService.create(company);
+        company.CreatedDate = createdDate;
+        createCompany = CompanyService.create(company);
+        if(createCompany){
+            
+            ToastService.ShowSuccess("Company is added successfully", "Success!");
+        }
+        else{
+            ToastService.ShowError("Something went wrong when creating the Company", "Error");
+        }
     }
 }

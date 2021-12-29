@@ -1,3 +1,4 @@
+using Blazored.Toast;
 using DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
@@ -34,6 +35,7 @@ namespace ProjectManagementApp
             services.AddScoped<ICompanyService, CompanyService>();
             services.AddScoped<IProjectService, ProjectService>();
             services.AddScoped<IUser, UserService>();
+            services.AddBlazoredToast();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -83,6 +83,20 @@ using ProjectManagementApp.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 11 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+using Blazored.Toast;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+using Blazored.Toast.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyView.razor"
 using DataAccess.Model;
 
@@ -112,8 +126,12 @@ using DataAccess;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 61 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyView.razor"
+#line 72 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyView.razor"
        
+    public bool EditDialogOpen { get; set; }
+    public int companyId { get; set; }
+    public string intialCompName { get; set; }
+    public DateTime createdDate { get; set; }
     List<Project> projectList = new List<Project>();
     List<Developer> userList = new List<Developer>();
     List<Company> listOfCompanies = new List<Company>();
@@ -130,6 +148,26 @@ using DataAccess;
             item.companyDevs = userList;
 
         }
+    }
+
+    private void onEditDialogClose(bool accepted)
+    {
+        EditDialogOpen = false;
+        StateHasChanged();
+    }
+
+    private void onEditDialogOpen()
+    {
+        EditDialogOpen = true;
+        StateHasChanged();
+    }
+
+    private void openEditDialog(int ButtonId,string compName,DateTime startedDate)
+    {
+        createdDate = startedDate;
+        intialCompName = compName;
+        companyId = ButtonId;
+        onEditDialogOpen();
     }
 
     private void addNewCompany()

@@ -12,5 +12,13 @@ namespace DataAccess.Model
         public string userName { get; set; }
         public string userEmail { get; set; }
         public string userContactNo { get; set; }
+
+        public string DiscriminatorValue
+        {
+            get
+            {
+                return this.GetType().Name;
+            }
+        }
     }
 }

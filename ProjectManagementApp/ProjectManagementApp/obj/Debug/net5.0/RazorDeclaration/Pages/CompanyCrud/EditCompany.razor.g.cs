@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace ProjectManagementApp.Pages.UserCrud
+namespace ProjectManagementApp.Pages.CompanyCrud
 {
     #line hidden
     using System;
@@ -97,28 +97,20 @@ using Blazored.Toast.Services;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\CreateUser.razor"
-using DataAccess;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\CreateUser.razor"
+#line 1 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\EditCompany.razor"
 using DataAccess.Model;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\CreateUser.razor"
+#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\EditCompany.razor"
 using ProjectManagementApp.Services;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/user/add")]
-    public partial class CreateUser : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class EditCompany : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -126,81 +118,49 @@ using ProjectManagementApp.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 51 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\CreateUser.razor"
+#line 32 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\EditCompany.razor"
        
-    public User user = new User();
-    public Developer developer = new Developer();
-    private string userName = "";
-    private string userEmail = "";
-    private string userContact = "";
-    private string selectedUserType = "1";
-    private string selectedCompany = "1";
-    private string selectedProject = "1";
-    private bool isDisabled = true;
-    List<Company> listOfCompanies = new List<Company>();
-    List<Project> listOfProjects = new List<Project>();
+    public Company company = new Company();
+    [Parameter]
+    public int IntialCompanyId { get; set; }
+    [Parameter]
+    public DateTime compCreateDate { get; set; }
+    [Parameter]
+    public string companyName { get; set; }
+    public string newCompanyName { get; set; }
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
 
-    protected async override Task OnInitializedAsync()
+
+
+    private Task ModalCancel()
     {
-        listOfCompanies = companyService.listOfCompanies();
-        listOfProjects = projectService.listOfProjects();
+        return OnClose.InvokeAsync(false);
     }
-
-    public void onSelectedItemUser(ChangeEventArgs e)
+    private Task ModalOk()
     {
-        selectedUserType = e.Value.ToString();
-        if(Int16.Parse(selectedUserType) == 2)
+        company = CompanyService.Get(IntialCompanyId);
+        company.Id = IntialCompanyId;
+        company.CompanyName = newCompanyName;
+        company.CreatedDate = compCreateDate;
+
+        try
         {
-            isDisabled = false;
+            company = CompanyService.Upate(company);
+            ToastService.ShowSuccess("Company is updated successfully", "Success!");
         }
-        else
+        catch (Exception)
         {
-            isDisabled = true;
+            ToastService.ShowError("Something went wrong when updating the Company", "Error");
         }
-    }
-
-    public void onSelectedItemCompanies(ChangeEventArgs e)
-    {
-        selectedCompany = e.Value.ToString();
-    }
-
-    public void onSelectedItemProject(ChangeEventArgs e)
-    {
-        selectedProject = e.Value.ToString();
-    }
-
-    public void HandleOnValidSubmit()
-    {
-
-    }
-
-    public void submitUser()
-    {
-        Console.WriteLine("the value : " + Int16.Parse(selectedUserType));
-        if(Int16.Parse(selectedUserType) == 2)
-        {
-            developer.userName = userName;
-            developer.userEmail = userEmail;
-            developer.userContactNo = userContact;
-            developer.companyId = Int16.Parse(selectedCompany);
-            developer.projectId = Int16.Parse(selectedProject);
-            userService.createDev(developer);
-        }
-        else
-        {
-            user.userName = userName;
-            user.userEmail = userEmail;
-            user.userContactNo = userContact;
-            userService.create(user);
-        }
+         return OnClose.InvokeAsync(true);
     }
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUser userService { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IProjectService projectService { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ICompanyService companyService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToastService ToastService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ICompanyService CompanyService { get; set; }
     }
 }
 #pragma warning restore 1591

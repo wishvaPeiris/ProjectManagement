@@ -82,6 +82,48 @@ using ProjectManagementApp.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+using Blazored.Toast;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+using Blazored.Toast.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\UserView.razor"
+using DataAccess;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\UserView.razor"
+using DataAccess.Model;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\UserView.razor"
+using Microsoft.EntityFrameworkCore;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\UserView.razor"
+using ProjectManagementApp.Services;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/user")]
     public partial class UserView : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -91,11 +133,31 @@ using ProjectManagementApp.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 6 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\UserView.razor"
+#line 72 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\UserView.razor"
        
+    public int count = 0;
+    List<Project> projectList = new List<Project>();
+    List<Developer> userList = new List<Developer>();
+    List<Company> listOfCompanies = new List<Company>();
+    List<string> companyName = new List<string>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        listOfCompanies = companyService.listOfCompanies();
+        projectList = projectService.listOfProjects();
+        userList = userService.listOfUsers();
+
+        foreach (var item in userList)
+        {
+            var companyLinqQuery = from value in listOfCompanies where value.Id == item.companyId select value.CompanyName.ToString();
+            companyName.Add(companyLinqQuery.FirstOrDefault());  
+        }
+    }
 
     public void addNewUser()
     {
+
+
         NavigationManager.NavigateTo("/user/add");
     }
 
@@ -104,6 +166,9 @@ using ProjectManagementApp.Shared;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUser userService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IProjectService projectService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ICompanyService companyService { get; set; }
     }
 }
 #pragma warning restore 1591
