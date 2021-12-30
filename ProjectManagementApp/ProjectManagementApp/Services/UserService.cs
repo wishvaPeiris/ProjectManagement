@@ -35,14 +35,26 @@ namespace ProjectManagementApp.Services
             return developer;
         }
 
-        public void Delete(int id)
+        public bool DeleteDev(int id)
         {
-            throw new System.NotImplementedException();
+            var dbDeveloper = _db.developers.Find(id);
+
+            if (dbDeveloper != null)
+            {
+                _db.Remove(dbDeveloper);
+                _db.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
         public User Get(int id)
         {
             throw new System.NotImplementedException();
+        }
+        public Developer GetDev(int id)
+        {
+            return _db.developers.Find(id);
         }
         public List<Developer> listOfDevelopersInCompany(int companyId)
         {
@@ -81,7 +93,28 @@ namespace ProjectManagementApp.Services
 
         public User Upate(User user)
         {
-            throw new System.NotImplementedException();
+            var dbUser = _db.users.Find(user.userId);
+            if (dbUser != null)
+            {
+                dbUser = user;
+                _db.SaveChanges();
+
+            }
+
+            return dbUser;
+        }
+
+        public Developer UpateDev(Developer developer)
+        {
+            var dbDev = _db.developers.Find(developer.userId);
+            if (dbDev != null)
+            {
+                dbDev = developer;
+                _db.SaveChanges();
+
+            }
+
+            return dbDev;
         }
     }
 }

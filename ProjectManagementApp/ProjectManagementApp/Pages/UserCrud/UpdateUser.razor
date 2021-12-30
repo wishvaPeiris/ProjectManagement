@@ -1,0 +1,83 @@
+﻿@using DataAccess.Model
+@using ProjectManagementApp.Services
+@inject IUser UserService
+@inject IToastService ToastService
+
+
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update user</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick = "@ModalCancel"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">New Username:</label>
+            <input type="text" class="form-control" id="recipient-name" @bind-value = "@newUserName">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Updated Email:</label>
+            <input type="text" class="form-control" id="recipient-name" @bind-value = "@newUserEmail">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">New User Contact No:</label>
+            <input type="text" class="form-control" id="recipient-name" @bind-value = "@newUserContactNo">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="@ModalCancel">Close</button>
+        <button type="button" class="btn btn-success" @onclick="@ModalOk">Update User</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+@code {
+    public User user = new User();
+    public Developer developer = new Developer();
+
+    [Parameter]
+    public int userID { get; set; }
+    public string newUserName { get; set; }
+    public string newUserEmail { get; set; }
+    public string newUserContactNo { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        developer = UserService.GetDev(userID);
+        newUserName = developer.userName;
+        newUserEmail = developer.userEmail;
+        newUserContactNo = developer.userContactNo;
+    }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+
+    private Task ModalOk()
+    {
+        developer.userName = newUserName;
+        developer.userEmail = newUserEmail;
+        developer.userContactNo = newUserContactNo;
+
+        try
+        {
+            developer = UserService.UpateDev(developer);
+            ToastService.ShowSuccess("Developer is updated successfully", "Success!");
+        }
+        catch (Exception)
+        {
+            ToastService.ShowError("Something went wrong when updating the developer", "Error");
+        }
+
+       return OnClose.InvokeAsync(true);
+    }
+}

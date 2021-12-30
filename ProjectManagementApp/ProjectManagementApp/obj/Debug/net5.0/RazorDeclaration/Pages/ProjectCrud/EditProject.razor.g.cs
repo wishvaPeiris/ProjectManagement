@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace ProjectManagementApp.Pages.CompanyCrud
+namespace ProjectManagementApp.Pages.ProjectCrud
 {
     #line hidden
     using System;
@@ -97,28 +97,20 @@ using Blazored.Toast.Services;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyView.razor"
+#line 1 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\ProjectCrud\EditProject.razor"
 using DataAccess.Model;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyView.razor"
+#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\ProjectCrud\EditProject.razor"
 using ProjectManagementApp.Services;
 
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 4 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyView.razor"
-using DataAccess;
-
-#line default
-#line hidden
-#nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/company")]
-    public partial class CompanyView : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class EditProject : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -126,60 +118,56 @@ using DataAccess;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 72 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyView.razor"
+#line 41 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\ProjectCrud\EditProject.razor"
        
-    public bool EditDialogOpen { get; set; }
-    public int companyId { get; set; }
-    public string intialCompName { get; set; }
-    List<Project> projectList = new List<Project>();
-    List<Developer> userList = new List<Developer>();
-    List<Company> listOfCompanies = new List<Company>();
+    public Project project = new Project();
+
+    [Parameter]
+    public int IntialProjectId { get; set; }
+
+    public string projectName { get; set; }
+    public string newProjectName { get; set; }
+
+    public string projectDescription { get; set; }
+    public string newProjectDescription { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
 
     protected async override Task OnInitializedAsync()
     {
-        listOfCompanies = companyService.listOfCompanies();
+        project = ProjectService.Get(IntialProjectId);
+        projectName = project.projectName;
+        projectDescription = project.projectDescription;
+    }
 
-        foreach (var item in listOfCompanies)
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+
+    private Task ModalOk()
+    {
+        project.projectName = newProjectName;
+        project.projectDescription = newProjectDescription;
+
+        try
         {
-            projectList = projectService.listOfProjectsToCompanyIdAsync(item.Id);
-            userList = userService.listOfDevelopersInCompany(item.Id);
-            item.companyProjects = projectList;
-            item.companyDevs = userList;
-
+            project = ProjectService.Upate(project);
+            ToastService.ShowSuccess("Project is updated successfully", "Success!");
         }
-    }
-
-    private void onEditDialogClose(bool accepted)
-    {
-        EditDialogOpen = false;
-        StateHasChanged();
-    }
-
-    private void onEditDialogOpen()
-    {
-        EditDialogOpen = true;
-        StateHasChanged();
-    }
-
-    private void openEditDialog(int ButtonId,string compName)
-    {
-        intialCompName = compName;
-        companyId = ButtonId;
-        onEditDialogOpen();
-    }
-
-    private void addNewCompany()
-    {
-        NavigationManager.NavigateTo("/company/add");
+        catch (Exception)
+        {
+            ToastService.ShowError("Something went wrong when updating the Project", "Error");
+        }
+         return OnClose.InvokeAsync(true);
     }
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUser userService { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IProjectService projectService { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ICompanyService companyService { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToastService ToastService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IProjectService ProjectService { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -8,6 +8,8 @@
 
 <h3>CreateUser</h3>
 <EditForm Model = "@user" OnValidSubmit="@HandleOnValidSubmit" class="col-7 p-0">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
     <div class="form-group">
         <label for="user_name">Username</label>
         <input id="user_name" class = "form-control" placeholder="alex@123" @bind-value = "userName" />
@@ -45,7 +47,7 @@
            }
         </select>
     </div>
-    <button @onclick = "submitUser" class="btn btn-secondary">Add the User</button>
+    <button class="btn btn-secondary">Add the User</button>
 </EditForm>
 
 @code {
@@ -92,13 +94,7 @@
 
     public void HandleOnValidSubmit()
     {
-
-    }
-
-    public void submitUser()
-    {
-        Console.WriteLine("the value : " + Int16.Parse(selectedUserType));
-        if(Int16.Parse(selectedUserType) == 2)
+         if(Int16.Parse(selectedUserType) == 2)
         {
             developer.userName = userName;
             developer.userEmail = userEmail;

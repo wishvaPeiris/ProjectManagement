@@ -133,9 +133,12 @@ using ProjectManagementApp.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 72 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\UserView.razor"
+#line 92 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\UserView.razor"
        
     public int count = 0;
+    public bool EditDialogOpen { get; set; }
+    public bool DeleteDialogOpen { get; set; }
+    public int userId { get; set; }
     List<Project> projectList = new List<Project>();
     List<Developer> userList = new List<Developer>();
     List<Company> listOfCompanies = new List<Company>();
@@ -154,10 +157,46 @@ using ProjectManagementApp.Services;
         }
     }
 
+    //update user
+    private void onEditDialogClose(bool accepted)
+    {
+        EditDialogOpen = false;
+        StateHasChanged();
+    }
+
+    private void onEditDialogOpen()
+    {
+        EditDialogOpen = true;
+        StateHasChanged();
+    }
+
+    private void openEditDialog(int ButtonId)
+    {
+        userId = ButtonId;
+        onEditDialogOpen();
+    }
+
+    //delete user
+    private void onDeleteDialogClose(bool accepted)
+    {
+        DeleteDialogOpen = false;
+        StateHasChanged();
+    }
+
+    private void onDeleteDialogOpen()
+    {
+        DeleteDialogOpen = true;
+        StateHasChanged();
+    }
+
+    private void openDeletDialog(int ButtonId)
+    {
+        userId = ButtonId;
+        onDeleteDialogOpen();
+    }
+
     public void addNewUser()
     {
-
-
         NavigationManager.NavigateTo("/user/add");
     }
 

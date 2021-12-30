@@ -118,20 +118,16 @@ using ProjectManagementApp.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 32 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\EditCompany.razor"
+#line 34 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\EditCompany.razor"
        
     public Company company = new Company();
     [Parameter]
     public int IntialCompanyId { get; set; }
     [Parameter]
-    public DateTime compCreateDate { get; set; }
-    [Parameter]
     public string companyName { get; set; }
     public string newCompanyName { get; set; }
     [Parameter]
     public EventCallback<bool> OnClose { get; set; }
-
-
 
     private Task ModalCancel()
     {
@@ -140,9 +136,7 @@ using ProjectManagementApp.Services;
     private Task ModalOk()
     {
         company = CompanyService.Get(IntialCompanyId);
-        company.Id = IntialCompanyId;
         company.CompanyName = newCompanyName;
-        company.CreatedDate = compCreateDate;
 
         try
         {

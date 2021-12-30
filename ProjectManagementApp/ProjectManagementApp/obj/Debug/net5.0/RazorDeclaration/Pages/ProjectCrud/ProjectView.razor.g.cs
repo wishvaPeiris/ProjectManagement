@@ -119,15 +119,16 @@ using ProjectManagementApp.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 55 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\ProjectCrud\ProjectView.razor"
+#line 72 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\ProjectCrud\ProjectView.razor"
        
     public int count = 0;
+    public bool EditDialogOpen { get; set; }
+    public bool DeleteDialogOpen { get; set; }
+    public int projectId { get; set; }
     List<Project> projectList = new List<Project>();
     List<Developer> userList = new List<Developer>();
     List<Company> listOfCompanies = new List<Company>();
     List<string> companyName = new List<string>();
-
-
 
     protected async override Task OnInitializedAsync()
     {
@@ -145,7 +146,41 @@ using ProjectManagementApp.Services;
         }
     }
 
+    private void onEditDialogClose(bool accepted)
+    {
+        EditDialogOpen = false;
+        StateHasChanged();
+    }
 
+    private void onEditDialogOpen()
+    {
+        EditDialogOpen = true;
+        StateHasChanged();
+    }
+
+    private void openEditDialog(int ButtonId)
+    {
+        projectId = ButtonId;
+        onEditDialogOpen();
+    }
+
+    private void onDeleteDialogClose(bool accepted)
+    {
+        DeleteDialogOpen = false;
+        StateHasChanged();
+    }
+
+    private void onDeleteDialogOpen()
+    {
+        DeleteDialogOpen = true;
+        StateHasChanged();
+    }
+
+    private void openDeletDialog(int ButtonId)
+    {
+        projectId = ButtonId;
+        onDeleteDialogOpen();
+    }
 
 
     private void addNewProject()

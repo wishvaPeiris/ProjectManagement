@@ -1,0 +1,84 @@
+﻿@using DataAccess.Model
+@using ProjectManagementApp.Services
+@inject IProjectService ProjectService
+@inject IToastService ToastService
+
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Project</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick = "@ModalCancel"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Project Name:</label>
+            <input type="text" class="form-control" id="recipient-name" disabled=true placeholder="@projectName">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">New Project name:</label>
+            <input type="text" class="form-control" id="recipient-name" placeholder="Project Name" @bind-value = "@newProjectName">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Project Description:</label>
+            <textarea type="text" class="form-control" id="recipient-name" disabled=true placeholder="@projectDescription"/>
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">New Project Description:</label>
+            <textarea type="text" class="form-control" id="recipient-name" placeholder="Project Description" @bind = "@newProjectDescription" @bind:event="oninput"/>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="@ModalCancel">Close</button>
+        <button type="button" class="btn btn-primary" @onclick="@ModalOk">Save Project</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+@code {
+    public Project project = new Project();
+
+    [Parameter]
+    public int IntialProjectId { get; set; }
+
+    public string projectName { get; set; }
+    public string newProjectName { get; set; }
+
+    public string projectDescription { get; set; }
+    public string newProjectDescription { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        project = ProjectService.Get(IntialProjectId);
+        projectName = project.projectName;
+        projectDescription = project.projectDescription;
+    }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+
+    private Task ModalOk()
+    {
+        project.projectName = newProjectName;
+        project.projectDescription = newProjectDescription;
+
+        try
+        {
+            project = ProjectService.Upate(project);
+            ToastService.ShowSuccess("Project is updated successfully", "Success!");
+        }
+        catch (Exception)
+        {
+            ToastService.ShowError("Something went wrong when updating the Project", "Error");
+        }
+         return OnClose.InvokeAsync(true);
+    }
+}

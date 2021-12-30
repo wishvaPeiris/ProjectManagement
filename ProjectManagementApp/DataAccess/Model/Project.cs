@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,11 @@ namespace DataAccess.Model
     public class Project
     {
         public int projectId { get; set; }
+        [Required]
+        [StringLength(500, ErrorMessage = "The title is too long, try a shorter one (500 character limit) ")]
         public string projectName { get; set; }
+        [Required]
+        [StringLength(8000, ErrorMessage = "The description is too long, try a shorter one (8000 character limit) ")]
         public string projectDescription { get; set; }  
         public int companyProjectId { get; set; }
 

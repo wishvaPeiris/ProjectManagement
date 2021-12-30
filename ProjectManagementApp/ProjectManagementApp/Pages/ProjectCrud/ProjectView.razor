@@ -21,6 +21,7 @@
               <th scope="col">Project Name</th>
               <th scope="col">Company Name</th>
               <th scope="col">No.of Developers</th>
+              <th>Manage Project</th>
             </tr>
           </thead>
           <tbody>
@@ -31,11 +32,27 @@
                       <td>@item.projectName</td>
                       <td>@companyName[projectList.IndexOf(item)]</td>
                       <td>@item.developers.Count()</td>
+                       <td>
+                          <button type="button" class="btn btn-success" id="@item.projectId" data-bs-toggle="modal" data-bs-target="#EditProject" @onclick = "@((args) =>openEditDialog(@item.projectId) )">
+                              <i class="material-icons">edit</i> Edit Project
+                          </button>
+                          <button type="button" class="btn btn-danger" id="@item.projectId" data-bs-toggle="modal" data-bs-target="#DeleteProject" @onclick = "@((args) =>openDeletDialog(@item.projectId) )">
+                              <i class="material-icons">delete</i> Delete project
+                          </button>
+                      </td>
                     </tr>
              }
           </tbody>
         </table>
     </div>
+    @if (EditDialogOpen)
+    {
+       <EditProject IntialProjectId ="@projectId" OnClose = "@onEditDialogClose"></EditProject>
+    }
+    @if (DeleteDialogOpen)
+    {
+        <DeleteProject Title = "Delete the Project" Message = "Are you sure you want to delete the following project" ProjectId = "@projectId" OnClose = "@onDeleteDialogClose"></DeleteProject>
+    }
 </div>
 
 <style>
@@ -54,12 +71,13 @@
 
 @code {
     public int count = 0;
+    public bool EditDialogOpen { get; set; }
+    public bool DeleteDialogOpen { get; set; }
+    public int projectId { get; set; }
     List<Project> projectList = new List<Project>();
     List<Developer> userList = new List<Developer>();
     List<Company> listOfCompanies = new List<Company>();
     List<string> companyName = new List<string>();
-
-
 
     protected async override Task OnInitializedAsync()
     {
@@ -77,7 +95,41 @@
         }
     }
 
+    private void onEditDialogClose(bool accepted)
+    {
+        EditDialogOpen = false;
+        StateHasChanged();
+    }
 
+    private void onEditDialogOpen()
+    {
+        EditDialogOpen = true;
+        StateHasChanged();
+    }
+
+    private void openEditDialog(int ButtonId)
+    {
+        projectId = ButtonId;
+        onEditDialogOpen();
+    }
+
+    private void onDeleteDialogClose(bool accepted)
+    {
+        DeleteDialogOpen = false;
+        StateHasChanged();
+    }
+
+    private void onDeleteDialogOpen()
+    {
+        DeleteDialogOpen = true;
+        StateHasChanged();
+    }
+
+    private void openDeletDialog(int ButtonId)
+    {
+        projectId = ButtonId;
+        onDeleteDialogOpen();
+    }
 
 
     private void addNewProject()

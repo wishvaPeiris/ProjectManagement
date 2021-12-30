@@ -26,14 +26,22 @@ namespace ProjectManagementApp.Services
             return project;
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
-            throw new System.NotImplementedException();
+            var dbProject = _db.projects.Find(id);
+
+            if(dbProject != null)
+            {
+                _db.Remove(dbProject);
+                _db.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
         public Project Get(int id)
         {
-            throw new System.NotImplementedException();
+            return _db.projects.Find(id);
         }
 
         public List<Project> listOfProjects()
@@ -56,9 +64,17 @@ namespace ProjectManagementApp.Services
             return list;
         }
 
-        public Project Upate(Project company)
+        public Project Upate(Project project)
         {
-            throw new System.NotImplementedException();
+            var dbProject = _db.projects.Find(project.projectId);
+            if (dbProject != null)
+            {
+                dbProject = project;
+                _db.SaveChanges();
+
+            }
+
+            return dbProject;
         }
     }
 }

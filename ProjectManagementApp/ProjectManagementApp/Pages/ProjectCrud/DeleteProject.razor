@@ -1,0 +1,55 @@
+﻿@using DataAccess.Model
+@using ProjectManagementApp.Services
+@inject IProjectService ProjectService
+@inject IToastService ToastService
+
+@inject NavigationManager NavigationManager
+
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+       <h5 class="modal-title" id="staticBackdropLabel">@Title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick = "@ModalCancel"></button>
+      </div>
+      <div class="modal-body">
+       <p class="modal-body" id="staticBackdropLabel">@Message</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="@ModalCancel">Close</button>
+        <button type="button" class="btn btn-primary" @onclick="@ModalOk">Delete Project</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+@code {
+    bool result = false;
+    [Parameter]
+    public string Title { get; set; }
+    [Parameter]
+    public string Message { get; set; }
+    [Parameter]
+    public int ProjectId { get; set; }
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        try
+        {
+            result = ProjectService.Delete(ProjectId);
+            ToastService.ShowSuccess("Project is deleted successfully", "Success!");
+        }
+        catch (Exception)
+        {
+            ToastService.ShowError("Something went wrong when deletng the Project", "Error");
+        }
+        NavigationManager.NavigateTo($"project");
+        return OnClose.InvokeAsync(true);
+    }
+}

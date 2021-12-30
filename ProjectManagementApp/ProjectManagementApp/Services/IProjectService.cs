@@ -15,9 +15,9 @@ namespace ProjectManagementApp.Services
         List<Project> listOfProjects();
         List<Project> listOfProjectsToCompanyIdAsync(int comp_id);
         //update project method
-        Project Upate(Project company);
+        Project Upate(Project project);
 
         //delete project method
-        void Delete(int id);
+        bool Delete(int id);
     }
 }

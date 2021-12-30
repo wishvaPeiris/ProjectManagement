@@ -8,7 +8,7 @@
 @inject IUser userService
 @inject NavigationManager NavigationManager
 <h3>UserView</h3>
-<button class = "btn btn-dark" @onclick = "addNewUser">Add user</button>
+<button class = "btn btn-dark" @onclick = "addNewUser"><i class="material-icons">add</i>Add user</button>
 
 <div class="container">
     <div class="section1">
@@ -22,6 +22,7 @@
               <th scope="col">Contact No</th>
               <th scope="col">User Company</th>
               <th scope="col">User Projects Count</th>
+              <th scope="col">User Manager</th>
             </tr>
           </thead>
           <tbody>
@@ -46,13 +47,28 @@
                              }
                           </table>
                       </td>
+                      <td>
+                          <button type="button" class="btn btn-success" id="@item.userId" data-bs-toggle="modal" data-bs-target="#EditProject" @onclick = "@((args) =>openEditDialog(@item.userId) )">
+                              <i class="material-icons">edit</i>Edit User
+                          </button>
+                          <button type="button" class="btn btn-danger" id="@item.userId" data-bs-toggle="modal" data-bs-target="#DeleteProject" @onclick = "@((args) =>openDeletDialog(@item.userId) )">
+                              <i class="material-icons">delete</i>Remove User
+                          </button>
+                      </td>
                     </tr>
                }
-                  
-
           </tbody>
         </table>
     </div>
+    @if (EditDialogOpen)
+    {
+        <UpdateUser userID = "@userId" OnClose = "@onEditDialogClose"></UpdateUser>
+    }
+
+    @if (DeleteDialogOpen)
+    {
+        <DeleteUser DeveloperId = "@userId" Title = "Remove the User" Message = "Are you sure you want to remove the user" OnClose = "@onDeleteDialogClose"></DeleteUser>
+    }
 </div>
 
 <style>
@@ -67,10 +83,17 @@
         background-color: lightblue;
         padding:10px;
     }
+    .table td{
+        border-top:none;
+
+    }
 </style>
 
 @code {
     public int count = 0;
+    public bool EditDialogOpen { get; set; }
+    public bool DeleteDialogOpen { get; set; }
+    public int userId { get; set; }
     List<Project> projectList = new List<Project>();
     List<Developer> userList = new List<Developer>();
     List<Company> listOfCompanies = new List<Company>();
@@ -89,10 +112,46 @@
         }
     }
 
+    //update user
+    private void onEditDialogClose(bool accepted)
+    {
+        EditDialogOpen = false;
+        StateHasChanged();
+    }
+
+    private void onEditDialogOpen()
+    {
+        EditDialogOpen = true;
+        StateHasChanged();
+    }
+
+    private void openEditDialog(int ButtonId)
+    {
+        userId = ButtonId;
+        onEditDialogOpen();
+    }
+
+    //delete user
+    private void onDeleteDialogClose(bool accepted)
+    {
+        DeleteDialogOpen = false;
+        StateHasChanged();
+    }
+
+    private void onDeleteDialogOpen()
+    {
+        DeleteDialogOpen = true;
+        StateHasChanged();
+    }
+
+    private void openDeletDialog(int ButtonId)
+    {
+        userId = ButtonId;
+        onDeleteDialogOpen();
+    }
+
     public void addNewUser()
     {
-
-
         NavigationManager.NavigateTo("/user/add");
     }
 

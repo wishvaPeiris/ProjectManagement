@@ -11,6 +11,7 @@ namespace ProjectManagementApp.Services
         //read project method
         //get project one
         User Get(int id);
+        Developer GetDev(int id);
         //get all project
         List<Developer> listOfUsers();
         //get all developers for that specific company id
@@ -18,8 +19,8 @@ namespace ProjectManagementApp.Services
         List<Developer> listOfDevelopersInProject(int projectId);
         //update project method
         User Upate(User user);
-
+        Developer UpateDev(Developer developer);
         //delete project method
-        void Delete(int id);
+        bool DeleteDev(int id);
     }
 }

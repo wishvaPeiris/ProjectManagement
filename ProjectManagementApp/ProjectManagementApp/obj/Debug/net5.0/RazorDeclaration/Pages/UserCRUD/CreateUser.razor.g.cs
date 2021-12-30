@@ -126,7 +126,7 @@ using ProjectManagementApp.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 51 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\CreateUser.razor"
+#line 53 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\CreateUser.razor"
        
     public User user = new User();
     public Developer developer = new Developer();
@@ -171,13 +171,7 @@ using ProjectManagementApp.Services;
 
     public void HandleOnValidSubmit()
     {
-
-    }
-
-    public void submitUser()
-    {
-        Console.WriteLine("the value : " + Int16.Parse(selectedUserType));
-        if(Int16.Parse(selectedUserType) == 2)
+         if(Int16.Parse(selectedUserType) == 2)
         {
             developer.userName = userName;
             developer.userEmail = userEmail;

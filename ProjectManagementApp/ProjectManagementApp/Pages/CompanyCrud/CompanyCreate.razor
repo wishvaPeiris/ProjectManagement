@@ -7,6 +7,8 @@
 
 <h3>CreateCompany</h3>
 <EditForm Model = "@company" OnValidSubmit="@HandleOnValidSubmit" class="col-7 p-0">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
     <div class="form-group">
         <label for="company_name">Company Name</label>
         <input id="company_name" @bind-value = "cName" class = "form-control" placeholder="abc" />
