@@ -97,6 +97,20 @@ using Blazored.Toast.Services;
 #line hidden
 #nullable disable
 #nullable restore
+#line 13 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+using ProjectManagementApp.Areas.Identity;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+using System.Security.Claims;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\CreateUser.razor"
 using DataAccess;
 
@@ -173,8 +187,8 @@ using ProjectManagementApp.Services;
     {
          if(Int16.Parse(selectedUserType) == 2)
         {
-            developer.userName = userName;
-            developer.userEmail = userEmail;
+            developer.UserName = userName;
+            developer.Email = userEmail;
             developer.userContactNo = userContact;
             developer.companyId = Int16.Parse(selectedCompany);
             developer.projectId = Int16.Parse(selectedProject);
@@ -182,10 +196,10 @@ using ProjectManagementApp.Services;
         }
         else
         {
-            user.userName = userName;
-            user.userEmail = userEmail;
+            developer.UserName = userName;
+            developer.Email = userEmail;
             user.userContactNo = userContact;
-            userService.create(user);
+            userService.createAsync(user);
         }
     }
 

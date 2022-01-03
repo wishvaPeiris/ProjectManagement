@@ -96,8 +96,8 @@
     {
          if(Int16.Parse(selectedUserType) == 2)
         {
-            developer.userName = userName;
-            developer.userEmail = userEmail;
+            developer.UserName = userName;
+            developer.Email = userEmail;
             developer.userContactNo = userContact;
             developer.companyId = Int16.Parse(selectedCompany);
             developer.projectId = Int16.Parse(selectedProject);
@@ -105,10 +105,10 @@
         }
         else
         {
-            user.userName = userName;
-            user.userEmail = userEmail;
+            developer.UserName = userName;
+            developer.Email = userEmail;
             user.userContactNo = userContact;
-            userService.create(user);
+            userService.createAsync(user);
         }
     }
 }

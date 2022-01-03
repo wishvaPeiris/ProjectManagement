@@ -19,8 +19,6 @@ namespace DataAccess.Model
         public int companyProjectId { get; set; }
 
         public Company companyProject { get; set; }
-
-        public ICollection<Developer> developers { get; set; }
         public ICollection<Ticket> companyTask { get; set; }
 
     }

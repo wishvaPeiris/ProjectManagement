@@ -12,6 +12,5 @@ namespace DataAccess.Model
         public int projectId { get; set; }
 
         public Company companyDev { get; set; }
-        public Project projectDev { get; set; }
     }
 }

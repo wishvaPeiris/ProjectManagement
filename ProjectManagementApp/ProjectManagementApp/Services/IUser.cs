@@ -1,13 +1,14 @@
 ﻿using DataAccess.Model;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ProjectManagementApp.Services
 {
     public interface IUser
     {
         //create project method
-        User create(User user);
-        Developer createDev(Developer developer);
+        Task<User> createAsync(User user);
+        Task<Developer> createDev(Developer developer);
         //read project method
         //get project one
         User Get(int id);

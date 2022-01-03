@@ -29,17 +29,17 @@
                 @foreach (var item in userList)
                 {
                    <tr>
-                      <th scope="row">@item.userId</th>
-                      <td>@item.userName</td>
-                      <td>@item.userEmail</td>
+                      <th scope="row">@item.Id</th>
+                      <td>userName</td>
+                      <td>userEmail</td>
                       <td>@item.userContactNo</td>
                       <td>@companyName[userList.IndexOf(item)]</td>
                       <td>
                           <table>
-                              @{var projectLinqQuery = from value in projectList where value.projectId == item.projectId select new {item.userId,value.projectName };}
+                              @{var projectLinqQuery = from value in projectList where value.projectId == item.projectId select new {item.Id,value.projectName };}
                               @foreach (var projName in projectLinqQuery)
                              {
-                                 if(projName.userId == item.userId){
+                                 if(projName.Id == item.Id){
                                    <tr>
                                      <td>@projName.projectName</td>
                                    </tr>
@@ -48,10 +48,10 @@
                           </table>
                       </td>
                       <td>
-                          <button type="button" class="btn btn-success" id="@item.userId" data-bs-toggle="modal" data-bs-target="#EditProject" @onclick = "@((args) =>openEditDialog(@item.userId) )">
+                          <button type="button" class="btn btn-success" id="@item.Id" data-bs-toggle="modal" data-bs-target="#EditProject" @onclick = "@((args) =>openEditDialog(Int16.Parse(@item.Id)) )">
                               <i class="material-icons">edit</i>Edit User
                           </button>
-                          <button type="button" class="btn btn-danger" id="@item.userId" data-bs-toggle="modal" data-bs-target="#DeleteProject" @onclick = "@((args) =>openDeletDialog(@item.userId) )">
+                          <button type="button" class="btn btn-danger" id="@item.Id" data-bs-toggle="modal" data-bs-target="#DeleteProject" @onclick = "@((args) =>openDeletDialog(Int16.Parse(@item.Id)) )">
                               <i class="material-icons">delete</i>Remove User
                           </button>
                       </td>

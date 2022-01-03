@@ -49,7 +49,6 @@ namespace ProjectManagementApp.Services
             {
                 dbCompany = company;
                 _db.SaveChanges();  
-                
             }
 
             return dbCompany;
