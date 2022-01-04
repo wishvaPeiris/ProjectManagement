@@ -117,22 +117,6 @@ using System.Security.Claims;
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 17 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\App.razor"
-      
-    [Parameter]
-    public AccessToken InitialState { get; set; }
-
-    protected override Task OnInitializedAsync()
-    {
-        AccessToken.XsrfToken = InitialState.XsrfToken;
-        return base.OnInitializedAsync();
-    }
-
-#line default
-#line hidden
-#nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private AccessToken AccessToken { get; set; }
     }
 }
 #pragma warning restore 1591

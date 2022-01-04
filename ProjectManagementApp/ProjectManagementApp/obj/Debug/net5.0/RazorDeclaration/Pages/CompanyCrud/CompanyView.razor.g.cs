@@ -133,7 +133,7 @@ using DataAccess;
 #nullable disable
 #nullable restore
 #line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyView.razor"
-           [Authorize(Roles = "Admin")]
+           [Authorize(Policy = "AdminOnly")]
 
 #line default
 #line hidden

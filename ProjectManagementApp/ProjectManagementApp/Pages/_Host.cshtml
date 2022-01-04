@@ -1,12 +1,8 @@
 ﻿@page "/"
-@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+
 @namespace ProjectManagementApp.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
-    var tokens = new AccessToken
-            {
-                XsrfToken = Xsrf.GetAndStoreTokens(HttpContext).RequestToken
-            };
 }
 
 <!DOCTYPE html>
@@ -22,7 +18,7 @@
     <link href="ProjectManagementApp.styles.css" rel="stylesheet" />
 </head>
 <body>
-    <component type="typeof(App)" param-InitialState="tokens" render-mode="ServerPrerendered" />
+    <component type="typeof(App)" render-mode="ServerPrerendered" />
 
     <div id="blazor-error-ui">
         <environment include="Staging,Production">

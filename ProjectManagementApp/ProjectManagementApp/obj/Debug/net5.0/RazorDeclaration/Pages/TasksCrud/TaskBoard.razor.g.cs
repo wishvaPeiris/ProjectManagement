@@ -140,14 +140,15 @@ using ProjectManagementApp.Pages.TasksCrud.TaskboardComponents;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 22 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
+#line 27 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
        
 
-     List<Ticket> Tickets = new List<Ticket>();
+    List<Ticket> Tickets = new List<Ticket>();
     string lastUpdatedJob = "";
 
     protected override void OnInitialized()
     {
+        // have to get the ticket details from the database pass it here
         Tickets.Add(new Ticket { ticketId= 1,taskTitle="title01" ,taskDescription = "Mow the lawn", taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 1 });
         Tickets.Add(new Ticket { ticketId = 2,taskTitle="title02" ,taskDescription = "Go to the gym",taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 2 });
         Tickets.Add(new Ticket { ticketId = 3,taskTitle="title02" ,taskDescription = "Call Ollie", taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 3 });
@@ -158,6 +159,13 @@ using ProjectManagementApp.Pages.TasksCrud.TaskboardComponents;
     void HandleStatusUpdated(Ticket updateTicket)
     {
         lastUpdatedJob = updateTicket.taskDescription;
+
+        // from here the ticket status can be updated after each change
+    }
+
+    public void createNewTicket()
+    {
+        
     }
 
 #line default

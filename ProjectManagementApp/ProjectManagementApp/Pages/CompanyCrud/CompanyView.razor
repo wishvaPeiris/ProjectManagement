@@ -1,5 +1,5 @@
 ﻿@page "/company"
-@attribute [Authorize(Roles = "Admin")]
+@attribute [Authorize(Policy = "AdminOnly")]
 @using DataAccess.Model
 @using ProjectManagementApp.Services
 @using DataAccess;
