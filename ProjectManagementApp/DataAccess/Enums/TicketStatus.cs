@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Enums
 {
-    public enum TaskStatus
+    public enum TicketStatus
     {
         New,
         Progress,

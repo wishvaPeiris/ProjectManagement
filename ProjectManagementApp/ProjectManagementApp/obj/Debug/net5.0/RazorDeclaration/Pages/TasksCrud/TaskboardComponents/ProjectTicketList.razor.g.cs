@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace ProjectManagementApp.Pages.TasksCrud
+namespace ProjectManagementApp.Pages.TasksCrud.TaskboardComponents
 {
     #line hidden
     using System;
@@ -111,28 +111,20 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
+#line 1 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskboardComponents\ProjectTicketList.razor"
 using DataAccess.Enums;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
+#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskboardComponents\ProjectTicketList.razor"
 using DataAccess.Model;
 
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 4 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
-using ProjectManagementApp.Pages.TasksCrud.TaskboardComponents;
-
-#line default
-#line hidden
-#nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/taskboard")]
-    public partial class TaskBoard : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class ProjectTicketList : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -140,24 +132,48 @@ using ProjectManagementApp.Pages.TasksCrud.TaskboardComponents;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 22 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
+#line 22 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskboardComponents\ProjectTicketList.razor"
        
 
-     List<Ticket> Tickets = new List<Ticket>();
-    string lastUpdatedJob = "";
+    [CascadingParameter] TicketContainer Container { get; set; }
+    [Parameter] public TicketStatus ListStatus { get; set; }
+    [Parameter] public TicketStatus[] AllowedStatuses { get; set; }
 
-    protected override void OnInitialized()
+    List<Ticket> Tickets = new List<Ticket>();
+    string dropClass = "";
+
+    protected override void OnParametersSet()
     {
-        Tickets.Add(new Ticket { ticketId= 1,taskTitle="title01" ,taskDescription = "Mow the lawn", taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 1 });
-        Tickets.Add(new Ticket { ticketId = 2,taskTitle="title02" ,taskDescription = "Go to the gym",taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 2 });
-        Tickets.Add(new Ticket { ticketId = 3,taskTitle="title02" ,taskDescription = "Call Ollie", taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 3 });
-        Tickets.Add(new Ticket { ticketId = 4,taskTitle="title03" ,taskDescription = "Fix bike tyre",taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 4 });
-        Tickets.Add(new Ticket { ticketId = 5,taskTitle= "title04",taskDescription = "Finish blog post",taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 5 });
+        Tickets.Clear();
+        Tickets.AddRange(Container.Tickets.Where(x => x.taskStatus == ListStatus));
     }
 
-    void HandleStatusUpdated(Ticket updateTicket)
+    private void HandleDragEnter()
     {
-        lastUpdatedJob = updateTicket.taskDescription;
+        if (ListStatus == Container.Payload.taskStatus) return;
+
+        if (AllowedStatuses != null && !AllowedStatuses.Contains(Container.Payload.taskStatus))
+        {
+            dropClass = "no-drop";
+        }
+        else
+        {
+            dropClass = "can-drop";
+        }
+    }
+
+    private void HandleDragLeave()
+    {
+        dropClass = "";
+    }
+
+    private async Task HandleDrop()
+    {
+        dropClass = "";
+
+        if (AllowedStatuses != null && !AllowedStatuses.Contains(Container.Payload.taskStatus)) return;
+
+        await Container.UpdateJobAsync(ListStatus);
     }
 
 #line default

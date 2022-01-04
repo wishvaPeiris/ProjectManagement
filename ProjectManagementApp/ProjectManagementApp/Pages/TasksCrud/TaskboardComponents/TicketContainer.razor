@@ -1,0 +1,28 @@
+﻿@using DataAccess.Enums
+@using DataAccess.Model
+
+<div class="tickets-container">
+    <CascadingValue Value="this">
+        @ChildContent
+    </CascadingValue>
+</div>
+
+@code {
+    [Parameter] public List<Ticket> Tickets { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public EventCallback<Ticket> OnStatusUpdated { get; set; }
+
+    public Ticket Payload { get; set; }
+
+    public async Task UpdateJobAsync(TicketStatus newStatus)
+    {
+        var task = Tickets.SingleOrDefault(x => x.ticketId == Payload.ticketId);
+
+        if (task != null)
+        {
+            task.taskStatus = newStatus;
+            task.taskCreateDate = DateTime.Now;
+            await OnStatusUpdated.InvokeAsync(Payload);
+        }
+    }
+}

@@ -1,0 +1,64 @@
+﻿@using DataAccess.Enums
+@using DataAccess.Model
+
+<div class="job-status">
+    <h3>@ListStatus (@Tickets.Count())</h3>
+
+    <ul class="dropzone @dropClass"
+        ondragover="event.preventDefault();"
+        ondragstart="event.dataTransfer.setData('', event.target.id);"
+        @ondrop="HandleDrop"
+        @ondragenter="HandleDragEnter"
+        @ondragleave="HandleDragLeave">
+
+        @foreach (var ticket in Tickets)
+        {
+            <ProjectTicket Ticket="ticket" />
+        }
+
+    </ul>
+</div>
+
+@code {
+
+    [CascadingParameter] TicketContainer Container { get; set; }
+    [Parameter] public TicketStatus ListStatus { get; set; }
+    [Parameter] public TicketStatus[] AllowedStatuses { get; set; }
+
+    List<Ticket> Tickets = new List<Ticket>();
+    string dropClass = "";
+
+    protected override void OnParametersSet()
+    {
+        Tickets.Clear();
+        Tickets.AddRange(Container.Tickets.Where(x => x.taskStatus == ListStatus));
+    }
+
+    private void HandleDragEnter()
+    {
+        if (ListStatus == Container.Payload.taskStatus) return;
+
+        if (AllowedStatuses != null && !AllowedStatuses.Contains(Container.Payload.taskStatus))
+        {
+            dropClass = "no-drop";
+        }
+        else
+        {
+            dropClass = "can-drop";
+        }
+    }
+
+    private void HandleDragLeave()
+    {
+        dropClass = "";
+    }
+
+    private async Task HandleDrop()
+    {
+        dropClass = "";
+
+        if (AllowedStatuses != null && !AllowedStatuses.Contains(Container.Payload.taskStatus)) return;
+
+        await Container.UpdateJobAsync(ListStatus);
+    }
+}

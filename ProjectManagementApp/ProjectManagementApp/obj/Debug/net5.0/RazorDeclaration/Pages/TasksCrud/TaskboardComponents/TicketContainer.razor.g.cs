@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace ProjectManagementApp.Pages.TasksCrud
+namespace ProjectManagementApp.Pages.TasksCrud.TaskboardComponents
 {
     #line hidden
     using System;
@@ -111,28 +111,20 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
+#line 1 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskboardComponents\TicketContainer.razor"
 using DataAccess.Enums;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
+#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskboardComponents\TicketContainer.razor"
 using DataAccess.Model;
 
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 4 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
-using ProjectManagementApp.Pages.TasksCrud.TaskboardComponents;
-
-#line default
-#line hidden
-#nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/taskboard")]
-    public partial class TaskBoard : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class TicketContainer : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -140,24 +132,24 @@ using ProjectManagementApp.Pages.TasksCrud.TaskboardComponents;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 22 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
+#line 10 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskboardComponents\TicketContainer.razor"
        
+    [Parameter] public List<Ticket> Tickets { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public EventCallback<Ticket> OnStatusUpdated { get; set; }
 
-     List<Ticket> Tickets = new List<Ticket>();
-    string lastUpdatedJob = "";
+    public Ticket Payload { get; set; }
 
-    protected override void OnInitialized()
+    public async Task UpdateJobAsync(TicketStatus newStatus)
     {
-        Tickets.Add(new Ticket { ticketId= 1,taskTitle="title01" ,taskDescription = "Mow the lawn", taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 1 });
-        Tickets.Add(new Ticket { ticketId = 2,taskTitle="title02" ,taskDescription = "Go to the gym",taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 2 });
-        Tickets.Add(new Ticket { ticketId = 3,taskTitle="title02" ,taskDescription = "Call Ollie", taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 3 });
-        Tickets.Add(new Ticket { ticketId = 4,taskTitle="title03" ,taskDescription = "Fix bike tyre",taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 4 });
-        Tickets.Add(new Ticket { ticketId = 5,taskTitle= "title04",taskDescription = "Finish blog post",taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 5 });
-    }
+        var task = Tickets.SingleOrDefault(x => x.ticketId == Payload.ticketId);
 
-    void HandleStatusUpdated(Ticket updateTicket)
-    {
-        lastUpdatedJob = updateTicket.taskDescription;
+        if (task != null)
+        {
+            task.taskStatus = newStatus;
+            task.taskCreateDate = DateTime.Now;
+            await OnStatusUpdated.InvokeAsync(Payload);
+        }
     }
 
 #line default

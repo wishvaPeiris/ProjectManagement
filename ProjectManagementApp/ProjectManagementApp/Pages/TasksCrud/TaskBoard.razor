@@ -1,6 +1,42 @@
 ﻿@page "/taskboard"
-<h3>Welcome to the Task board of the Project -----Project Name--------</h3>
+@using DataAccess.Enums
+@using DataAccess.Model
+@using ProjectManagementApp.Pages.TasksCrud.TaskboardComponents
+
+<TicketContainer Tickets="Tickets" OnStatusUpdated="HandleStatusUpdated">
+    <ProjectTicketList ListStatus="TicketStatus.New" AllowedStatuses="@(new TicketStatus[] { TicketStatus.Progress})" />
+    <ProjectTicketList ListStatus="TicketStatus.Progress" AllowedStatuses="@(new TicketStatus[] { TicketStatus.New})" />
+    <ProjectTicketList ListStatus="TicketStatus.Complete" AllowedStatuses="@(new TicketStatus[] { TicketStatus.Progress })" />
+</TicketContainer>
+
+<hr />
+<p>Last updated job was: <strong>@lastUpdatedJob</strong></p>
+<hr />
+
+@foreach (var task in Tickets)
+{
+    <p>@task.taskDescription - <strong>@task.taskStatus</strong></p>
+}
+
 
 @code {
 
+     List<Ticket> Tickets = new List<Ticket>();
+    string lastUpdatedJob = "";
+
+    protected override void OnInitialized()
+    {
+        Tickets.Add(new Ticket { ticketId= 1,taskTitle="title01" ,taskDescription = "Mow the lawn", taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 1 });
+        Tickets.Add(new Ticket { ticketId = 2,taskTitle="title02" ,taskDescription = "Go to the gym",taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 2 });
+        Tickets.Add(new Ticket { ticketId = 3,taskTitle="title02" ,taskDescription = "Call Ollie", taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 3 });
+        Tickets.Add(new Ticket { ticketId = 4,taskTitle="title03" ,taskDescription = "Fix bike tyre",taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 4 });
+        Tickets.Add(new Ticket { ticketId = 5,taskTitle= "title04",taskDescription = "Finish blog post",taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 5 });
+    }
+
+    void HandleStatusUpdated(Ticket updateTicket)
+    {
+        lastUpdatedJob = updateTicket.taskDescription;
+
+         // from here the ticket status can be updated after each change
+    }
 }

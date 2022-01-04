@@ -1,0 +1,15 @@
+﻿@using DataAccess.Model
+<li class="draggable" draggable="true" title="@Ticket.taskDescription" @ondragstart="@(() => HandleDragStart(Ticket))">
+    <p class="description">@Ticket.taskDescription</p>
+    <p class="last-updated"><small>Last Updated</small> @Ticket.taskCreateDate.ToString("HH:mm.ss tt")</p>
+</li>
+
+@code {
+    [CascadingParameter] TicketContainer Container { get; set; }
+    [Parameter] public Ticket Ticket { get; set; }
+
+    private void HandleDragStart(Ticket selectedTicket)
+    {
+        Container.Payload = selectedTicket;
+    }
+}
