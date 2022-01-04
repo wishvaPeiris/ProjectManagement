@@ -11,7 +11,6 @@ C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagemen
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Pages\CompanyCrud\CompanyView.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Pages\CompanyCrud\EditCompany.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
-C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Pages\Login.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Pages\ProjectCrud\CreateProject.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Pages\ProjectCrud\DeleteProject.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Pages\ProjectCrud\EditProject.razor.g.cs
@@ -175,7 +174,6 @@ C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagemen
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\CompanyCrud\CompanyView.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\CompanyCrud\EditCompany.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
-C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\Login.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\ProjectCrud\CreateProject.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\ProjectCrud\DeleteProject.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\ProjectCrud\EditProject.razor.g.cs
@@ -219,3 +217,17 @@ C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagemen
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\ref\ProjectManagementApp.dll
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\ProjectManagementApp.pdb
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\ProjectManagementApp.genruntimeconfig.cache
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Shared\UserLoginLayout.razor.g.cs
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Shared\UserLoginLayout.razor.g.cs
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\bin\Debug\net5.0\Blazored.LocalStorage.dll
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\bin\Debug\net5.0\Microsoft.AspNetCore.Authorization.dll
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\bin\Debug\net5.0\Microsoft.AspNetCore.Components.dll
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\bin\Debug\net5.0\Microsoft.AspNetCore.Components.Forms.dll
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\bin\Debug\net5.0\Microsoft.AspNetCore.Components.Web.dll
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\bin\Debug\net5.0\Microsoft.AspNetCore.Metadata.dll
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\bin\Debug\net5.0\Microsoft.JSInterop.dll
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\bin\Debug\net5.0\System.IO.Pipelines.dll
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Pages\TasksCrud\CreateTask.razor.g.cs
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Pages\TasksCrud\TaskBoard.razor.g.cs
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\TasksCrud\CreateTask.razor.g.cs
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\TasksCrud\TaskBoard.razor.g.cs

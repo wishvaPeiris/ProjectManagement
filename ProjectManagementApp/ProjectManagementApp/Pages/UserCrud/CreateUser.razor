@@ -41,7 +41,9 @@
      <div class="form-group">
         <label for="project_name">Select the project assigned</label>
         <select id="projects" disabled="@isDisabled" value="@selectedProject" name="Projects" @onchange = "onSelectedItemProject" >
-            @foreach (var item in listOfProjects)
+            @{var projectLinqQuery = from value in listOfProjects where value.projectId == Int16.Parse(selectedCompany)  select new {value.projectId,value.projectName};}
+
+            @foreach (var item in projectLinqQuery)
            {
              <option value="@item.projectId">@item.projectName</option>
            }

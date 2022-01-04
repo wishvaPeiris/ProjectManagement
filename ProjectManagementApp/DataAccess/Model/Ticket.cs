@@ -12,6 +12,7 @@ namespace DataAccess.Model
         public string taskTitle { get; set; }
         public string taskDescription { get; set; }
         public DateTime taskCreateDate { get; set; }
+        public TaskStatus taskStatus { get; set; }
         public int projectId { get; set; }
 
         public Project project { get; set; }

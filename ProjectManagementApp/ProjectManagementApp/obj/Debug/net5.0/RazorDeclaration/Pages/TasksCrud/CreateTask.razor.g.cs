@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace ProjectManagementApp.Pages.UserCrud
+namespace ProjectManagementApp.Pages.TasksCrud
 {
     #line hidden
     using System;
@@ -110,79 +110,13 @@ using System.Security.Claims;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 1 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\UpdateUser.razor"
-using DataAccess.Model;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\UpdateUser.razor"
-using ProjectManagementApp.Services;
-
-#line default
-#line hidden
-#nullable disable
-    public partial class UpdateUser : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class CreateTask : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 39 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\UpdateUser.razor"
-       
-    public User user = new User();
-    public Developer developer = new Developer();
-
-    [Parameter]
-    public int userID { get; set; }
-    public string newUserName { get; set; }
-    public string newUserEmail { get; set; }
-    public string newUserContactNo { get; set; }
-
-    [Parameter]
-    public EventCallback<bool> OnClose { get; set; }
-
-    protected async override Task OnInitializedAsync()
-    {
-        developer = UserService.GetDev(userID);
-        newUserName = developer.UserName;
-        newUserEmail = developer.Email;
-        newUserContactNo = developer.userContactNo;
-    }
-
-    private Task ModalCancel()
-    {
-        return OnClose.InvokeAsync(false);
-    }
-
-    private Task ModalOk()
-    {
-        developer.UserName = newUserName;
-        developer.Email = newUserEmail;
-        developer.userContactNo = newUserContactNo;
-
-        try
-        {
-            developer = UserService.UpateDev(developer);
-            ToastService.ShowSuccess("Developer is updated successfully", "Success!");
-        }
-        catch (Exception)
-        {
-            ToastService.ShowError("Something went wrong when updating the developer", "Error");
-        }
-
-       return OnClose.InvokeAsync(true);
-    }
-
-#line default
-#line hidden
-#nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToastService ToastService { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUser UserService { get; set; }
     }
 }
 #pragma warning restore 1591

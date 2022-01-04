@@ -124,7 +124,7 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(4, "PreferExactMatches", 
+                __builder2.AddAttribute(4, "PreferExactMatches", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 4 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\App.razor"
                                                                          true
@@ -132,7 +132,7 @@ using System.Security.Claims;
 #line default
 #line hidden
 #nullable disable
-                );
+                ));
                 __builder2.AddAttribute(5, "Found", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.RouteData>)((routeData) => (__builder3) => {
                     __builder3.OpenComponent<Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView>(6);
                     __builder3.AddAttribute(7, "RouteData", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.RouteData>(

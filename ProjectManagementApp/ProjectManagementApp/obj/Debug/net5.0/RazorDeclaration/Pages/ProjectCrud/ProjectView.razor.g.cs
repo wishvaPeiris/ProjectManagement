@@ -143,17 +143,20 @@ using ProjectManagementApp.Services;
     List<Developer> userList = new List<Developer>();
     List<Company> listOfCompanies = new List<Company>();
     List<string> companyName = new List<string>();
+    List<int> listOfUsers = new List<int>();
 
     protected async override Task OnInitializedAsync()
     {
         listOfCompanies = companyService.listOfCompanies();
         projectList = projectService.listOfProjects();
+        userList = userService.listOfUsers();
 
 
         foreach (var item in projectList)
         {
-            userList = userService.listOfDevelopersInProject(item.projectId);
-            //item.developers = userList;
+            var userLinqQuery = from value in userList where value.projectId == item.projectId select value.Email.ToList();
+            listOfUsers.Add(userLinqQuery.Count());
+
             //getting the company name
             var myLinqQuery = from value in listOfCompanies where value.Id == item.companyProjectId select value.CompanyName.ToString();
             companyName.Add(myLinqQuery.FirstOrDefault());

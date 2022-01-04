@@ -52,8 +52,8 @@
     protected async override Task OnInitializedAsync()
     {
         developer = UserService.GetDev(userID);
-        //newUserName = developer.userName;
-        //newUserEmail = developer.userEmail;
+        newUserName = developer.UserName;
+        newUserEmail = developer.Email;
         newUserContactNo = developer.userContactNo;
     }
 
@@ -64,8 +64,8 @@
 
     private Task ModalOk()
     {
-        //developer.userName = newUserName;
-        //developer.userEmail = newUserEmail;
+        developer.UserName = newUserName;
+        developer.Email = newUserEmail;
         developer.userContactNo = newUserContactNo;
 
         try

@@ -118,7 +118,7 @@ using System.Security.Claims;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 42 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Shared\NavMenu.razor"
+#line 47 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

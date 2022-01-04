@@ -31,7 +31,7 @@
                       <th scope="row">@item.projectId</th>
                       <td>@item.projectName</td>
                       <td>@companyName[projectList.IndexOf(item)]</td>
-                      <td>count</td>
+                      <td>@listOfUsers[projectList.IndexOf(item)]</td>
                        <td>
                           <button type="button" class="btn btn-success" id="@item.projectId" data-bs-toggle="modal" data-bs-target="#EditProject" @onclick = "@((args) =>openEditDialog(@item.projectId) )">
                               <i class="material-icons">edit</i> Edit Project
@@ -78,17 +78,20 @@
     List<Developer> userList = new List<Developer>();
     List<Company> listOfCompanies = new List<Company>();
     List<string> companyName = new List<string>();
+    List<int> listOfUsers = new List<int>();
 
     protected async override Task OnInitializedAsync()
     {
         listOfCompanies = companyService.listOfCompanies();
         projectList = projectService.listOfProjects();
+        userList = userService.listOfUsers();
 
 
         foreach (var item in projectList)
         {
-            userList = userService.listOfDevelopersInProject(item.projectId);
-            //item.developers = userList;
+            var userLinqQuery = from value in userList where value.projectId == item.projectId select value.Email.ToList();
+            listOfUsers.Add(userLinqQuery.Count());
+
             //getting the company name
             var myLinqQuery = from value in listOfCompanies where value.Id == item.companyProjectId select value.CompanyName.ToString();
             companyName.Add(myLinqQuery.FirstOrDefault());
