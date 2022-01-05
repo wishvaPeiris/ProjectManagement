@@ -2,32 +2,33 @@
 @using ProjectManagementApp.Services
 @inject ITaskService TicketService
 @inject IToastService ToastService
+@inject NavigationManager NavigationManager
 
 <div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create Ticket</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick = "@ModalCancel"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Ticket Title:</label>
-            <input type="text" class="form-control" id="recipient-name" @bind-value = "@ticketTitle">
-          </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Ticket Description:</label>
-            <textarea id="company_descriptiopn" @bind="ticketDescription" @bind:event="oninput" class = "form-control" />
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="@ModalCancel">Close</button>
-        <button type="button" class="btn btn-primary" @onclick="@ModalOk">Save Ticket</button>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create Ticket</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick="@ModalCancel"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Ticket Title:</label>
+                        <input type="text" class="form-control" id="recipient-name" @bind-value="@ticketTitle">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Ticket Description:</label>
+                        <textarea id="company_descriptiopn" @bind="ticketDescription" @bind:event="oninput" class="form-control" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="@ModalCancel">Close</button>
+                <button type="button" class="btn btn-primary" @onclick="@ModalOk">Save Ticket</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 @code {
@@ -47,7 +48,7 @@
 
     protected async override Task OnInitializedAsync()
     {
-        
+
     }
 
     private Task ModalCancel()
@@ -66,14 +67,15 @@
         result = TicketService.createTicket(ticket);
 
         if (result)
-         {
+        {
+            NavigationManager.NavigateTo("/company");
             ToastService.ShowSuccess("Task is added successfully", "Success!");
-         }
+        }
         else
-          {
+        {
             ToastService.ShowError("Something went wrong when adding the task", "Error");
-          }
-         StateHasChanged();
-         return OnClose.InvokeAsync(true);
+        }
+        StateHasChanged();
+        return OnClose.InvokeAsync(true);
     }
 }

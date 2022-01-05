@@ -13,3 +13,18 @@ C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\DataAccess\obj\D
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\DataAccess\obj\Debug\net5.0\ref\DataAccess.dll
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\DataAccess\obj\Debug\net5.0\DataAccess.pdb
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\DataAccess\obj\Debug\net5.0\DataAccess.genruntimeconfig.cache
+C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\DataAccess\bin\Debug\net5.0\DataAccess.deps.json
+C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\DataAccess\bin\Debug\net5.0\DataAccess.runtimeconfig.json
+C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\DataAccess\bin\Debug\net5.0\DataAccess.runtimeconfig.dev.json
+C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\DataAccess\bin\Debug\net5.0\DataAccess.dll
+C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\DataAccess\bin\Debug\net5.0\ref\DataAccess.dll
+C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\DataAccess\bin\Debug\net5.0\DataAccess.pdb
+C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\DataAccess\obj\Debug\net5.0\DataAccess.csprojAssemblyReference.cache
+C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\DataAccess\obj\Debug\net5.0\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\DataAccess\obj\Debug\net5.0\DataAccess.AssemblyInfoInputs.cache
+C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\DataAccess\obj\Debug\net5.0\DataAccess.AssemblyInfo.cs
+C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\DataAccess\obj\Debug\net5.0\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\DataAccess\obj\Debug\net5.0\DataAccess.dll
+C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\DataAccess\obj\Debug\net5.0\ref\DataAccess.dll
+C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\DataAccess\obj\Debug\net5.0\DataAccess.pdb
+C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\DataAccess\obj\Debug\net5.0\DataAccess.genruntimeconfig.cache

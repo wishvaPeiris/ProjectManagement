@@ -13,112 +13,112 @@ namespace ProjectManagementApp.Pages.CompanyCrud
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+#line 1 "C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+#line 2 "C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+#line 3 "C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+#line 4 "C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+#line 5 "C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+#line 6 "C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+#line 7 "C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+#line 8 "C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+#line 9 "C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
 using ProjectManagementApp;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+#line 10 "C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
 using ProjectManagementApp.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+#line 11 "C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
 using Blazored.Toast;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+#line 12 "C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
 using Blazored.Toast.Services;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 13 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+#line 13 "C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
 using ProjectManagementApp.Areas.Identity;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
+#line 14 "C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\_Imports.razor"
 using System.Security.Claims;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyCreate.razor"
+#line 2 "C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyCreate.razor"
 using DataAccess.Model;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyCreate.razor"
+#line 3 "C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyCreate.razor"
 using ProjectManagementApp.Services;
 
 #line default
@@ -133,7 +133,7 @@ using ProjectManagementApp.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 20 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyCreate.razor"
+#line 21 "C:\Users\Mahen\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyCreate.razor"
        
     public Company company = new Company();
     bool createCompany = false;
@@ -150,11 +150,14 @@ using ProjectManagementApp.Services;
         company.CompanyName = cName;
         company.CreatedDate = createdDate;
         createCompany = CompanyService.create(company);
-        if(createCompany){
-            
+        if (createCompany)
+        {
+
             ToastService.ShowSuccess("Company is added successfully", "Success!");
+            NavigationManager.NavigateTo("/company");
         }
-        else{
+        else
+        {
             ToastService.ShowError("Something went wrong when creating the Company", "Error");
         }
     }
@@ -162,6 +165,7 @@ using ProjectManagementApp.Services;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ICompanyService CompanyService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToastService ToastService { get; set; }
     }
