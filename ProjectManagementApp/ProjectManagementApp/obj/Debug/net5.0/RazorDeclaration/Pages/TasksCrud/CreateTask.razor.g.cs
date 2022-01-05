@@ -150,6 +150,7 @@ using ProjectManagementApp.Services;
 
     protected async override Task OnInitializedAsync()
     {
+        
     }
 
     private Task ModalCancel()

@@ -142,6 +142,23 @@ using DataAccess.Model;
         Container.Payload = selectedTicket;
     }
 
+    private void onCreateDialogClose(bool accepted)
+    {
+        //EditDialogOpen = false;
+        StateHasChanged();
+    }
+
+    private void onCreateDialogOpen()
+    {
+        //EditDialogOpen = true;
+        StateHasChanged();
+    }
+
+    private void openCreateDialog()
+    {
+        onCreateDialogOpen();
+    }
+
 #line default
 #line hidden
 #nullable disable
