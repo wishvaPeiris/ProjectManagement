@@ -131,6 +131,13 @@ using ProjectManagementApp.Pages.TasksCrud.TaskboardComponents;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
+using ProjectManagementApp.Services;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/taskboard")]
     public partial class TaskBoard : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -140,14 +147,24 @@ using ProjectManagementApp.Pages.TasksCrud.TaskboardComponents;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 27 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
+#line 29 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
        
 
     List<Ticket> Tickets = new List<Ticket>();
+    
     string lastUpdatedJob = "";
+    private string checkName;
 
-    protected override void OnInitialized()
+    private Task<AuthenticationState> _authenticationState { get; set; }
+    private AuthenticationState authState;
+
+    protected async override Task OnInitializedAsync()
     {
+        
+        
+        authState = await _authenticationState;
+        checkName = authState.User.Identity.Name;
+
         // have to get the ticket details from the database pass it here
         Tickets.Add(new Ticket { ticketId= 1,taskTitle="title01" ,taskDescription = "Mow the lawn", taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 1 });
         Tickets.Add(new Ticket { ticketId = 2,taskTitle="title02" ,taskDescription = "Go to the gym",taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 2 });
@@ -171,6 +188,7 @@ using ProjectManagementApp.Pages.TasksCrud.TaskboardComponents;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUser Userservice { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -140,7 +140,7 @@ using ProjectManagementApp.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 55 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\CreateUser.razor"
+#line 51 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\CreateUser.razor"
        
     public User user = new User();
     public Developer developer = new Developer();
@@ -185,10 +185,12 @@ using ProjectManagementApp.Services;
 
     public void HandleOnValidSubmit()
     {
-         if(Int16.Parse(selectedUserType) == 2)
+        if(Int16.Parse(selectedUserType) == 2)
         {
-            developer.UserName = userName;
+            developer.UserName = userEmail;
             developer.Email = userEmail;
+            developer.NormalizedUserName = userEmail.ToUpper();
+            developer.NormalizedEmail = userEmail.ToUpper();
             developer.userContactNo = userContact;
             developer.companyId = Int16.Parse(selectedCompany);
             developer.projectId = Int16.Parse(selectedProject);
@@ -196,8 +198,10 @@ using ProjectManagementApp.Services;
         }
         else
         {
-            developer.UserName = userName;
-            developer.Email = userEmail;
+            user.UserName = userEmail;
+            user.Email = userEmail;
+            user.NormalizedUserName = userEmail.ToUpper();
+            user.NormalizedEmail = userEmail.ToUpper();
             user.userContactNo = userContact;
             userService.createAsync(user);
         }

@@ -4,13 +4,15 @@ i:{00000000-0000-0000-0000-000000000000}:ProjectManagementApp.sln
 i:{00000000-0000-0000-0000-000000000000}:DataAccess
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\dataaccess.csproj
 ++Dependencies
-i:{90639086-d018-4a83-bfd7-1d429b241f6a}:>573
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>984
+i:{90639086-d018-4a83-bfd7-1d429b241f6a}:>120
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1048
 ++Data
 i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\data\
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\areas\identity\data\
-++ApplicationDbContext.cs
-i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\data\applicationdbcontext.cs
+++Enums
+i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\enums\
+++TicketStatus.cs
+i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\enums\ticketstatus.cs
 ++Migrations
 i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\migrations\
 ++Model
@@ -36,6 +38,8 @@ i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:frameworks
 ++Packages
 i:{90639086-d018-4a83-bfd7-1d429b241f6a}:packages
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:packages
+++ApplicationDbContext.cs
+i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\data\applicationdbcontext.cs
 ++20211220013608_InitialCreate.cs
 i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\migrations\20211220013608_initialcreate.cs
 ++20211224130416_added_new_column.cs
@@ -46,6 +50,8 @@ i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagem
 i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\migrations\20220101142524_addingidentity.cs
 ++20220102173204_changesInUser.cs
 i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\migrations\20220102173204_changesinuser.cs
+++20220104144321_ChangesInTicketClass.cs
+i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\migrations\20220104144321_changesinticketclass.cs
 ++ApplicationDbContextModelSnapshot.cs
 i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\migrations\applicationdbcontextmodelsnapshot.cs
 ++Microsoft.CodeAnalysis.CSharp.NetAnalyzers
@@ -61,14 +67,14 @@ i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\.nuget\packages\micros
 i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\microsoft.netcore.app
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\microsoft.netcore.app
 ++Microsoft.AspNetCore.Identity.EntityFrameworkCore (5.0.12)
-i:{90639086-d018-4a83-bfd7-1d429b241f6a}:>995
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1008
+i:{90639086-d018-4a83-bfd7-1d429b241f6a}:>1080
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1063
 ++Microsoft.EntityFrameworkCore.SqlServer (5.0.12)
-i:{90639086-d018-4a83-bfd7-1d429b241f6a}:>994
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1007
+i:{90639086-d018-4a83-bfd7-1d429b241f6a}:>1079
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1062
 ++Microsoft.EntityFrameworkCore.Tools (5.0.12)
-i:{90639086-d018-4a83-bfd7-1d429b241f6a}:>996
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1011
+i:{90639086-d018-4a83-bfd7-1d429b241f6a}:>1081
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1066
 ++20211220013608_InitialCreate.Designer.cs
 i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\migrations\20211220013608_initialcreate.designer.cs
 ++20211224130416_added_new_column.Designer.cs
@@ -79,14 +85,27 @@ i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagem
 i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\migrations\20220101142524_addingidentity.designer.cs
 ++20220102173204_changesInUser.Designer.cs
 i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\migrations\20220102173204_changesinuser.designer.cs
+++20220104144321_ChangesInTicketClass.Designer.cs
+i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\migrations\20220104144321_changesinticketclass.designer.cs
 ++ProjectManagementApp
 i:{00000000-0000-0000-0000-000000000000}:ProjectManagementApp
 ++Connected Services 
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>985
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1049
 ++Properties
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\properties\
 ++wwwroot
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\
+++css
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\open-iconic\font\css\
+++bootstrap
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\bootstrap\
+++open-iconic
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\open-iconic\
+++site.css
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\site.css
+++favicon.ico
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\favicon.ico
 ++Areas
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\areas\
 ++Identity
@@ -102,10 +121,10 @@ i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagem
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\_viewimports.cshtml
 ++Login.cshtml
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\areas\identity\pages\account\login.cshtml
-++Login.cshtml.cs
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\areas\identity\pages\account\login.cshtml.cs
 ++Logout.cshtml
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\areas\identity\pages\account\logout.cshtml
+++Logout.cshtml.cs
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\areas\identity\pages\account\logout.cshtml.cs
 ++Register.cshtml
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\areas\identity\pages\account\register.cshtml
 ++_ViewStart.cshtml
@@ -129,11 +148,41 @@ i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagem
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\login\
 ++ProjectCrud
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\projectcrud\
+++CreateProject.razor
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\projectcrud\createproject.razor
+++DeleteProject.razor
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\projectcrud\deleteproject.razor
+++EditProject.razor
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\projectcrud\editproject.razor
+++ProjectView.razor
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\projectcrud\projectview.razor
 ++Shared
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\shared\
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\shared\
+++TasksCrud
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\taskscrud\
+++TaskboardComponents
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\taskscrud\taskboardcomponents\
+++ProjectTicket.razor
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\taskscrud\taskboardcomponents\projectticket.razor
+++ProjectTicketList.razor
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\taskscrud\taskboardcomponents\projectticketlist.razor
+++TicketContainer.razor
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\taskscrud\taskboardcomponents\ticketcontainer.razor
+++CreateTask.razor
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\taskscrud\createtask.razor
+++TaskBoard.razor
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\taskscrud\taskboard.razor
 ++UserCrud
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\usercrud\
+++CreateUser.razor
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\usercrud\createuser.razor
+++DeleteUser.razor
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\usercrud\deleteuser.razor
+++UpdateUser.razor
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\usercrud\updateuser.razor
+++UserView.razor
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\usercrud\userview.razor
 ++_Host.cshtml
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\_host.cshtml
 ++Error.cshtml
@@ -150,10 +199,14 @@ i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagem
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\services\icompanyservice.cs
 ++IProjectService.cs
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\services\iprojectservice.cs
+++ITaskService.cs
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\services\itaskservice.cs
 ++IUser.cs
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\services\iuser.cs
 ++ProjectService.cs
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\services\projectservice.cs
+++TaskService.cs
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\services\taskservice.cs
 ++UserService.cs
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\services\userservice.cs
 ++LoginLayout.razor
@@ -164,8 +217,6 @@ i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagem
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\shared\navmenu.razor
 ++SurveyPrompt.razor
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\shared\surveyprompt.razor
-++UserLoginLayout.razor
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\shared\userloginlayout.razor
 ++_Imports.razor
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\_imports.razor
 ++App.razor
@@ -179,44 +230,33 @@ i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagem
 ++Startup.cs
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\startup.cs
 ++SQL Server Express LocalDB (Local) (ConnectionStrings:ProjectManagementAppContextConnection)
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1026
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1093
 ++Projects
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:projects
 ++launchSettings.json
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\properties\launchsettings.json
 ++serviceDependencies.json
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\properties\servicedependencies.json
-++css
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\open-iconic\font\css\
-++favicon.ico
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\favicon.ico
-++Logout.cshtml.cs
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\areas\identity\pages\account\logout.cshtml.cs
+++bootstrap.min.css
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\bootstrap\bootstrap.min.css
+++font
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\open-iconic\font\
+++FONT-LICENSE
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\open-iconic\font-license
+++ICON-LICENSE
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\open-iconic\icon-license
+++README.md
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\open-iconic\readme.md
+++Login.cshtml.cs
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\areas\identity\pages\account\login.cshtml.cs
 ++Register.cshtml.cs
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\areas\identity\pages\account\register.cshtml.cs
-++CreateProject.razor
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\projectcrud\createproject.razor
-++DeleteProject.razor
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\projectcrud\deleteproject.razor
-++EditProject.razor
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\projectcrud\editproject.razor
-++ProjectView.razor
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\projectcrud\projectview.razor
 ++_Layout.cshtml
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\shared\_layout.cshtml
 ++_LoginPartial.cshtml
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\shared\_loginpartial.cshtml
 ++_ValidationScriptsPartial.cshtml
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\shared\_validationscriptspartial.cshtml
-++CreateUser.razor
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\usercrud\createuser.razor
-++DeleteUser.razor
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\usercrud\deleteuser.razor
-++UpdateUser.razor
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\usercrud\updateuser.razor
-++UserView.razor
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\usercrud\userview.razor
 ++Error.cshtml.cs
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\error.cshtml.cs
 ++MainLayout.razor.css
@@ -237,36 +277,22 @@ i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\.nuget\packages\micros
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\.nuget\packages\microsoft.codeanalysis.analyzers\3.0.0\analyzers\dotnet\cs\microsoft.codeanalysis.csharp.analyzers.dll
 ++Microsoft.AspNetCore.App
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\microsoft.aspnetcore.app
+++Blazored.LocalStorage (4.1.5)
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1061
 ++Blazored.Toast (3.1.2)
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1010
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1065
 ++Microsoft.AspNetCore.ApiAuthorization.IdentityServer (5.0.12)
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1014
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1069
 ++Microsoft.AspNetCore.Identity.UI (5.0.12)
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1013
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1068
 ++Microsoft.AspNetCore.Session (2.2.0)
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1009
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1064
 ++Microsoft.Extensions.Identity.Stores (5.0.12)
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1015
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1070
 ++Microsoft.VisualStudio.Web.CodeGeneration.Design (5.0.2)
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1012
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1067
 ++serviceDependencies.local.json
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\properties\servicedependencies.local.json
-++bootstrap
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\bootstrap\
-++open-iconic
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\open-iconic\
-++site.css
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\site.css
-++bootstrap.min.css
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\bootstrap\bootstrap.min.css
-++font
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\open-iconic\font\
-++FONT-LICENSE
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\open-iconic\font-license
-++ICON-LICENSE
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\open-iconic\icon-license
-++README.md
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\open-iconic\readme.md
 ++bootstrap.min.css.map
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\bootstrap\bootstrap.min.css.map
 ++fonts
@@ -284,29 +310,10 @@ i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagem
 ++open-iconic.woff
 i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\wwwroot\css\open-iconic\font\fonts\open-iconic.woff
 ++SignalR
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1033
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1094
 ++Your application is making use of SignalR. For environments that need to scale we strongly recommend adding a dependency on Azure SignalR Service.
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1034
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1095
 ++SQL Server Database (ConnectionStrings:DefaultConnection)
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1035
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1096
 ++SQL Server Database dependency with connectionId 'ConnectionStrings:DefaultConnection' is detected
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1036
-++CustomAuthenticationStateProvider.cs
-++Blazored.LocalStorage (4.1.5)
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1039
-++NewFolder
-++TasksCrud
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\pages\taskscrud\
-++ITaskService.cs
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\services\itaskservice.cs
-++TaskService.cs
-i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\projectmanagementapp\services\taskservice.cs
-++enum
-++Enums
-i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\enums\
-++TaskStatus.cs
-i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\enums\taskstatus.cs
-++20220104144321_ChangesInTicketClass.cs
-i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\migrations\20220104144321_changesinticketclass.cs
-++20220104144321_ChangesInTicketClass.Designer.cs
-i:{90639086-d018-4a83-bfd7-1d429b241f6a}:c:\users\user 01\desktop\projectmanagement\projectmanagementapp\dataaccess\migrations\20220104144321_changesinticketclass.designer.cs
+i:{6be6f68c-f47c-4f2f-b744-ea1bed67fc3b}:>1097

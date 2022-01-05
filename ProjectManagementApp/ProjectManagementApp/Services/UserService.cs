@@ -34,7 +34,7 @@ namespace ProjectManagementApp.Services
 
         public async Task<Developer> createDev(Developer developer)
         {
-            var userRole = new UserStore<User>(_db);
+            var userRole = new UserStore<IdentityUser>(_db);
             if (developer != null)
             {
                 await userRole.AddToRoleAsync(developer, "developer");
@@ -62,6 +62,11 @@ namespace ProjectManagementApp.Services
         public User Get(int id)
         {
             throw new System.NotImplementedException();
+        }
+
+        public User GetByEmail(string email)
+        {
+            return _db.developers.Find(email);
         }
 
         public Developer GetDev(int id)

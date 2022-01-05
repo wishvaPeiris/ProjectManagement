@@ -9,6 +9,7 @@ namespace ProjectManagementApp.Services
         Task<User> createAsync(User user);
         Task<Developer> createDev(Developer developer);
         User Get(int id);
+        User GetByEmail(string email);
         Developer GetDev(int id);
         List<Developer> listOfUsers();
         List<Developer> listOfDevelopersInCompany(int companyId);

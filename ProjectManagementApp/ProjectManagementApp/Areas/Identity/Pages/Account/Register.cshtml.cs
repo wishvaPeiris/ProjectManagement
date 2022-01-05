@@ -76,8 +76,10 @@ namespace ProjectManagementApp.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = Input.Email, Email = Input.Email };
-                var result = await _userManager.CreateAsync(user, Input.Password);
+                var user = await _userManager.FindByEmailAsync(Input.Email);
+                var deleteExisitng = await _userManager.DeleteAsync(user);
+
+                var result = await _userManager.CreateAsync(user,Input.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");

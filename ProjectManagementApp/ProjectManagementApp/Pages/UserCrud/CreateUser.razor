@@ -11,10 +11,6 @@
     <DataAnnotationsValidator/>
     <ValidationSummary/>
     <div class="form-group">
-        <label for="user_name">Username</label>
-        <input id="user_name" class = "form-control" placeholder="alex@123" @bind-value = "userName" />
-    </div>
-    <div class="form-group">
         <label for="user_email">User Email</label>
         <input id="user_email" type="email" class = "form-control" placeholder="alex123@gmail.com" @bind-value = "userEmail" />
     </div>
@@ -96,10 +92,12 @@
 
     public void HandleOnValidSubmit()
     {
-         if(Int16.Parse(selectedUserType) == 2)
+        if(Int16.Parse(selectedUserType) == 2)
         {
-            developer.UserName = userName;
+            developer.UserName = userEmail;
             developer.Email = userEmail;
+            developer.NormalizedUserName = userEmail.ToUpper();
+            developer.NormalizedEmail = userEmail.ToUpper();
             developer.userContactNo = userContact;
             developer.companyId = Int16.Parse(selectedCompany);
             developer.projectId = Int16.Parse(selectedProject);
@@ -107,8 +105,10 @@
         }
         else
         {
-            developer.UserName = userName;
-            developer.Email = userEmail;
+            user.UserName = userEmail;
+            user.Email = userEmail;
+            user.NormalizedUserName = userEmail.ToUpper();
+            user.NormalizedEmail = userEmail.ToUpper();
             user.userContactNo = userContact;
             userService.createAsync(user);
         }
