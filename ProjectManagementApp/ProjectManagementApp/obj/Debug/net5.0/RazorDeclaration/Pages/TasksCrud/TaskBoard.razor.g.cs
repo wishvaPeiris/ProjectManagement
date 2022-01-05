@@ -181,7 +181,6 @@ using ProjectManagementApp.Services;
     void HandleStatusUpdated(Ticket updateTicket)
     {
         lastUpdatedJob = updateTicket.taskDescription;
-
         // from here the ticket status can be updated after each change
     }
 
