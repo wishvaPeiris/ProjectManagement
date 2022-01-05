@@ -140,7 +140,7 @@ using ProjectManagementApp.Services;
     [Parameter]
     public string Message { get; set; }
     [Parameter]
-    public int DeveloperId { get; set; }
+    public string DeveloperId { get; set; }
     [Parameter]
     public EventCallback<bool> OnClose { get; set; }
 

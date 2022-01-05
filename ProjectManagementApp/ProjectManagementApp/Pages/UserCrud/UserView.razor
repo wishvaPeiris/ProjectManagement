@@ -49,10 +49,10 @@
                           </table>
                       </td>
                       <td>
-                          <button type="button" class="btn btn-success" id="@item.Id" data-bs-toggle="modal" data-bs-target="#EditProject" @onclick = "@((args) =>openEditDialog(Int16.Parse(@item.Id)) )">
+                          <button type="button" class="btn btn-success" id="@item.Id" data-bs-toggle="modal" data-bs-target="#EditProject" @onclick = "@((args) =>openEditDialog(@item.Id) )">
                               <i class="material-icons">edit</i>
                           </button>
-                          <button type="button" class="btn btn-danger" id="@item.Id" data-bs-toggle="modal" data-bs-target="#DeleteProject" @onclick = "@((args) =>openDeletDialog(Int16.Parse(@item.Id)) )">
+                          <button type="button" class="btn btn-danger" id="@item.Id" data-bs-toggle="modal" data-bs-target="#DeleteProject" @onclick = "@((args) =>openDeletDialog(@item.Id))">
                               <i class="material-icons">delete</i>
                           </button>
                       </td>
@@ -94,7 +94,7 @@
     public int count = 0;
     public bool EditDialogOpen { get; set; }
     public bool DeleteDialogOpen { get; set; }
-    public int userId { get; set; }
+    public string userId { get; set; }
     List<Project> projectList = new List<Project>();
     List<Developer> userList = new List<Developer>();
     List<Company> listOfCompanies = new List<Company>();
@@ -126,7 +126,7 @@
         StateHasChanged();
     }
 
-    private void openEditDialog(int ButtonId)
+    private void openEditDialog(string ButtonId)
     {
         userId = ButtonId;
         onEditDialogOpen();
@@ -145,7 +145,7 @@
         StateHasChanged();
     }
 
-    private void openDeletDialog(int ButtonId)
+    private void openDeletDialog(string ButtonId)
     {
         userId = ButtonId;
         onDeleteDialogOpen();

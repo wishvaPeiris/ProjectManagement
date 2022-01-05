@@ -138,7 +138,7 @@ using ProjectManagementApp.Services;
     public Developer developer = new Developer();
 
     [Parameter]
-    public int userID { get; set; }
+    public string userID { get; set; }
     public string newUserName { get; set; }
     public string newUserEmail { get; set; }
     public string newUserContactNo { get; set; }

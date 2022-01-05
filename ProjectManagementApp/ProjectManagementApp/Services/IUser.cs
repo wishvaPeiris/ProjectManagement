@@ -10,12 +10,12 @@ namespace ProjectManagementApp.Services
         Task<Developer> createDev(Developer developer);
         User Get(int id);
         Developer GetByEmail(string email);
-        Developer GetDev(int id);
+        Developer GetDev(string id);
         List<Developer> listOfUsers();
         List<Developer> listOfDevelopersInCompany(int companyId);
         List<Developer> listOfDevelopersInProject(int projectId);
         User Upate(User user);
         Developer UpateDev(Developer developer);
-        bool DeleteDev(int id);
+        bool DeleteDev(string id);
     }
 }

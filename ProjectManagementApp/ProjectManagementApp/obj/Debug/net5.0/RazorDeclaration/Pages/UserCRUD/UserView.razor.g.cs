@@ -159,7 +159,7 @@ using ProjectManagementApp.Services;
     public int count = 0;
     public bool EditDialogOpen { get; set; }
     public bool DeleteDialogOpen { get; set; }
-    public int userId { get; set; }
+    public string userId { get; set; }
     List<Project> projectList = new List<Project>();
     List<Developer> userList = new List<Developer>();
     List<Company> listOfCompanies = new List<Company>();
@@ -191,7 +191,7 @@ using ProjectManagementApp.Services;
         StateHasChanged();
     }
 
-    private void openEditDialog(int ButtonId)
+    private void openEditDialog(string ButtonId)
     {
         userId = ButtonId;
         onEditDialogOpen();
@@ -210,7 +210,7 @@ using ProjectManagementApp.Services;
         StateHasChanged();
     }
 
-    private void openDeletDialog(int ButtonId)
+    private void openDeletDialog(string ButtonId)
     {
         userId = ButtonId;
         onDeleteDialogOpen();

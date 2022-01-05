@@ -46,15 +46,17 @@ namespace ProjectManagementApp.Services
             
         }
 
-        public bool DeleteDev(int id)
+        public bool DeleteDev(string id)
         {
-            var dbDeveloper = _db.developers.Find(id);
-
-            if (dbDeveloper != null)
+            var developer = new Developer();
+            foreach (var item in _db.developers)
             {
-                _db.Remove(dbDeveloper);
-                _db.SaveChanges();
-                return true;
+                if (item.Id.Equals(id))
+                {
+                    _db.Remove(item);
+                    _db.SaveChanges();
+                    return true;
+                }
             }
             return false;
         }
@@ -77,9 +79,17 @@ namespace ProjectManagementApp.Services
             return developer;
         }
 
-        public Developer GetDev(int id)
+        public Developer GetDev(string id)
         {
-            return _db.developers.Find(id);
+            var developer = new Developer();
+            foreach (var item in _db.developers)
+            {
+                if (item.Id.Equals(id))
+                {
+                    developer = item;
+                }
+            }
+            return developer;
         }
 
         public List<Developer> listOfDevelopersInCompany(int companyId)
