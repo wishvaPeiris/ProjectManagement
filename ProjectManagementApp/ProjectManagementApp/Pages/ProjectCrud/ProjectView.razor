@@ -35,10 +35,10 @@
                       <td>@listOfUsers[projectList.IndexOf(item)]</td>
                        <td>
                           <button type="button" class="btn btn-success" id="@item.projectId" data-bs-toggle="modal" data-bs-target="#EditProject" @onclick = "@((args) =>openEditDialog(@item.projectId) )">
-                              <i class="material-icons">edit</i> Edit Project
+                              <i class="material-icons">edit</i>
                           </button>
                           <button type="button" class="btn btn-danger" id="@item.projectId" data-bs-toggle="modal" data-bs-target="#DeleteProject" @onclick = "@((args) =>openDeletDialog(@item.projectId) )">
-                              <i class="material-icons">delete</i> Delete project
+                              <i class="material-icons">delete</i>
                           </button>
                       </td>
                     </tr>

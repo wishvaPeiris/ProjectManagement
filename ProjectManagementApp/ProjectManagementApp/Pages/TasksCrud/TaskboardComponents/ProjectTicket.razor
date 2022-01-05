@@ -1,7 +1,17 @@
-﻿@using DataAccess.Model
+﻿@using DataAccess.Enums
+@using DataAccess.Model
 <li class="draggable" draggable="true" title="@Ticket.taskDescription" @ondragstart="@(() => HandleDragStart(Ticket))">
+    <p class="description">@Ticket.taskTitle</p><br />
     <p class="description">@Ticket.taskDescription</p>
-    <p class="last-updated"><small>Last Updated</small> @Ticket.taskCreateDate.ToString("HH:mm.ss tt")</p>
+    @if(Ticket.taskStatus == TicketStatus.New)
+    {
+        <button type="button" class="btn btn-success" id="@Ticket.ticketId" data-bs-toggle="modal" data-bs-target="#EditProject">
+           <i class="material-icons">edit</i>
+        </button>
+        <button type="button" class="btn btn-danger" id="@Ticket.ticketId" data-bs-toggle="modal" data-bs-target="#DeleteProject">
+           <i class="material-icons">delete</i>
+        </button>
+    }
 </li>
 
 @code {

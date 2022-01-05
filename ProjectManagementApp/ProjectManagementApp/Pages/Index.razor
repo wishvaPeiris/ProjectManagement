@@ -9,4 +9,13 @@ Welcome to your new app.
 
 
 @code{
+    [Parameter]
+    public string userLoginEmail { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+       Console.WriteLine(userLoginEmail);
+    }
+
+   
 }

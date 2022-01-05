@@ -235,3 +235,5 @@ C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagemen
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\TasksCrud\TaskboardComponents\ProjectTicket.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\TasksCrud\TaskboardComponents\ProjectTicketList.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\TasksCrud\TaskboardComponents\TicketContainer.razor.g.cs
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Pages\TasksCrud\EditTicket.razor.g.cs
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\TasksCrud\EditTicket.razor.g.cs

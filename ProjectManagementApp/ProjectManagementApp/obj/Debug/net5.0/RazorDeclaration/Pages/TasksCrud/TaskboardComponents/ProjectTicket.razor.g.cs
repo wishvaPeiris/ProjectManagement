@@ -112,6 +112,13 @@ using System.Security.Claims;
 #nullable disable
 #nullable restore
 #line 1 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskboardComponents\ProjectTicket.razor"
+using DataAccess.Enums;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskboardComponents\ProjectTicket.razor"
 using DataAccess.Model;
 
 #line default
@@ -125,7 +132,7 @@ using DataAccess.Model;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 7 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskboardComponents\ProjectTicket.razor"
+#line 17 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskboardComponents\ProjectTicket.razor"
        
     [CascadingParameter] TicketContainer Container { get; set; }
     [Parameter] public Ticket Ticket { get; set; }

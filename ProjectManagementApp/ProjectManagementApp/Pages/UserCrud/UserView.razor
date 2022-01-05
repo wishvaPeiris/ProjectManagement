@@ -50,10 +50,10 @@
                       </td>
                       <td>
                           <button type="button" class="btn btn-success" id="@item.Id" data-bs-toggle="modal" data-bs-target="#EditProject" @onclick = "@((args) =>openEditDialog(Int16.Parse(@item.Id)) )">
-                              <i class="material-icons">edit</i>Edit User
+                              <i class="material-icons">edit</i>
                           </button>
                           <button type="button" class="btn btn-danger" id="@item.Id" data-bs-toggle="modal" data-bs-target="#DeleteProject" @onclick = "@((args) =>openDeletDialog(Int16.Parse(@item.Id)) )">
-                              <i class="material-icons">delete</i>Remove User
+                              <i class="material-icons">delete</i>
                           </button>
                       </td>
                     </tr>

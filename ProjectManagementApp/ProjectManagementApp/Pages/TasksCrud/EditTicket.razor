@@ -7,18 +7,18 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create Ticket</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick = "@ModalCancel"></button>
+        <h5 class="modal-title" id="exampleModalLabel">Edit Ticket</h5>
+        <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick = "@ModalCancel"></button>
       </div>
       <div class="modal-body">
         <form>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Ticket Title:</label>
-            <input type="text" class="form-control" id="recipient-name" @bind-value = "@ticketTitle">
+            <input type="text" class="form-control" id="recipient-name" @bind-value = "@ticketTitle" placeholder="@ticket.taskTitle">
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label">Ticket Description:</label>
-            <textarea id="company_descriptiopn" @bind="ticketDescription" @bind:event="oninput" class = "form-control" />
+            <textarea id="company_descriptiopn" @bind="ticketDescription" @bind:event="oninput" class = "form-control" placeholder="@ticket.taskDescription" />
           </div>
         </form>
       </div>
@@ -35,7 +35,7 @@
     private bool result = false;
 
     [Parameter]
-    public int projectId { get; set; }
+    public int ticketID { get; set; }
 
     public string ticketTitle { get; set; }
     public string ticketDescription { get; set; }
@@ -47,6 +47,7 @@
 
     protected async override Task OnInitializedAsync()
     {
+        ticket = TicketService.Get(ticketID);
     }
 
     private Task ModalCancel()
@@ -58,21 +59,17 @@
     {
         ticket.taskTitle = ticketTitle;
         ticket.taskDescription = ticketDescription;
-        ticket.projectId = projectId;
-        ticket.taskCreateDate = createdDate;
-        ticket.taskStatus = DataAccess.Enums.TicketStatus.New;
 
-        result = TicketService.createTicket(ticket);
+        result = TicketService.Upate(ticket);
 
         if (result)
          {
-            ToastService.ShowSuccess("Task is added successfully", "Success!");
+            ToastService.ShowSuccess("Task is updated successfully", "Success!");
          }
         else
           {
-            ToastService.ShowError("Something went wrong when adding the task", "Error");
+            ToastService.ShowError("Something went wrong when updating the task", "Error");
           }
-         StateHasChanged();
          return OnClose.InvokeAsync(true);
     }
 }

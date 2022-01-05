@@ -64,9 +64,17 @@ namespace ProjectManagementApp.Services
             throw new System.NotImplementedException();
         }
 
-        public User GetByEmail(string email)
+        public Developer GetByEmail(string email)
         {
-            return _db.developers.Find(email);
+            var developer = new Developer();
+            foreach (var item in _db.developers)
+            {
+                if (item.Email.Equals(email))
+                {
+                    developer =  item;
+                }
+            }
+            return developer;
         }
 
         public Developer GetDev(int id)

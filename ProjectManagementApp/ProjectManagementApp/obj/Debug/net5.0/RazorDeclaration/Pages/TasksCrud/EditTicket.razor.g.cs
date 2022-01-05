@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace ProjectManagementApp.Pages
+namespace ProjectManagementApp.Pages.TasksCrud
 {
     #line hidden
     using System;
@@ -111,14 +111,20 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\Index.razor"
+#line 1 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\EditTicket.razor"
 using DataAccess.Model;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/")]
-    public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\EditTicket.razor"
+using ProjectManagementApp.Services;
+
+#line default
+#line hidden
+#nullable disable
+    public partial class EditTicket : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -126,21 +132,55 @@ using DataAccess.Model;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 11 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\Index.razor"
-      
+#line 33 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\EditTicket.razor"
+       
+    public Ticket ticket = new Ticket();
+    private bool result = false;
+
     [Parameter]
-    public string userLoginEmail { get; set; }
+    public int ticketID { get; set; }
+
+    public string ticketTitle { get; set; }
+    public string ticketDescription { get; set; }
+    private DateTime createdDate = DateTime.Today;
+
+
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
 
     protected async override Task OnInitializedAsync()
     {
-       Console.WriteLine(userLoginEmail);
+        ticket = TicketService.Get(ticketID);
     }
 
-   
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+
+    private Task ModalOk()
+    {
+        ticket.taskTitle = ticketTitle;
+        ticket.taskDescription = ticketDescription;
+
+        result = TicketService.Upate(ticket);
+
+        if (result)
+         {
+            ToastService.ShowSuccess("Task is updated successfully", "Success!");
+         }
+        else
+          {
+            ToastService.ShowError("Something went wrong when updating the task", "Error");
+          }
+         return OnClose.InvokeAsync(true);
+    }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToastService ToastService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ITaskService TicketService { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -111,29 +111,36 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
+#line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
 using DataAccess.Enums;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
+#line 4 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
 using DataAccess.Model;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
+#line 5 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
 using ProjectManagementApp.Pages.TasksCrud.TaskboardComponents;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
+#line 6 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
 using ProjectManagementApp.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
+           [Authorize(Policy = "DeveloperOnly")]
 
 #line default
 #line hidden
@@ -147,30 +154,28 @@ using ProjectManagementApp.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 29 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
+#line 30 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
        
 
     List<Ticket> Tickets = new List<Ticket>();
-    
+    public bool EditDialogOpen { get; set; }
+    public int projectID { get; set; }
+
     string lastUpdatedJob = "";
     private string checkName;
 
+    [CascadingParameter]
     private Task<AuthenticationState> _authenticationState { get; set; }
     private AuthenticationState authState;
 
     protected async override Task OnInitializedAsync()
     {
-        
-        
         authState = await _authenticationState;
         checkName = authState.User.Identity.Name;
 
-        // have to get the ticket details from the database pass it here
-        Tickets.Add(new Ticket { ticketId= 1,taskTitle="title01" ,taskDescription = "Mow the lawn", taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 1 });
-        Tickets.Add(new Ticket { ticketId = 2,taskTitle="title02" ,taskDescription = "Go to the gym",taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 2 });
-        Tickets.Add(new Ticket { ticketId = 3,taskTitle="title02" ,taskDescription = "Call Ollie", taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 3 });
-        Tickets.Add(new Ticket { ticketId = 4,taskTitle="title03" ,taskDescription = "Fix bike tyre",taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 4 });
-        Tickets.Add(new Ticket { ticketId = 5,taskTitle= "title04",taskDescription = "Finish blog post",taskCreateDate =DateTime.Now ,taskStatus = TicketStatus.New, projectId = 5 });
+        var project = Userservice.GetByEmail(checkName);
+        projectID = project.projectId;
+        Tickets = TicketService.listOfTicketsForProject(project.projectId);
     }
 
     void HandleStatusUpdated(Ticket updateTicket)
@@ -180,14 +185,28 @@ using ProjectManagementApp.Services;
         // from here the ticket status can be updated after each change
     }
 
-    public void createNewTicket()
+    private void onCreateDialogClose(bool accepted)
     {
-        
+        EditDialogOpen = false;
+        StateHasChanged();
     }
+
+    private void onCreateDialogOpen()
+    {
+        EditDialogOpen = true;
+        StateHasChanged();
+    }
+
+    private void openCreateDialog()
+    {
+        onCreateDialogOpen();
+    }
+
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ITaskService TicketService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUser Userservice { get; set; }
     }
 }

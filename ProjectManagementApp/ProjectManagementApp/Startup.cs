@@ -39,6 +39,7 @@ namespace ProjectManagementApp
             services.AddScoped<ICompanyService, CompanyService>();
             services.AddScoped<IProjectService, ProjectService>();
             services.AddScoped<IUser, UserService>();
+            services.AddScoped<ITaskService, TaskService>();
             services.AddScoped<AccessToken>();
             services.AddBlazoredToast();
 

@@ -110,6 +110,20 @@ using System.Security.Claims;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 1 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\CreateTask.razor"
+using DataAccess.Model;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\CreateTask.razor"
+using ProjectManagementApp.Services;
+
+#line default
+#line hidden
+#nullable disable
     public partial class CreateTask : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -117,6 +131,59 @@ using System.Security.Claims;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 33 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\CreateTask.razor"
+       
+    public Ticket ticket = new Ticket();
+    private bool result = false;
+
+    [Parameter]
+    public int projectId { get; set; }
+
+    public string ticketTitle { get; set; }
+    public string ticketDescription { get; set; }
+    private DateTime createdDate = DateTime.Today;
+
+
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+    }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+
+    private Task ModalOk()
+    {
+        ticket.taskTitle = ticketTitle;
+        ticket.taskDescription = ticketDescription;
+        ticket.projectId = projectId;
+        ticket.taskCreateDate = createdDate;
+        ticket.taskStatus = DataAccess.Enums.TicketStatus.New;
+
+        result = TicketService.createTicket(ticket);
+
+        if (result)
+         {
+            ToastService.ShowSuccess("Task is added successfully", "Success!");
+         }
+        else
+          {
+            ToastService.ShowError("Something went wrong when adding the task", "Error");
+          }
+         StateHasChanged();
+         return OnClose.InvokeAsync(true);
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToastService ToastService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ITaskService TicketService { get; set; }
     }
 }
 #pragma warning restore 1591
