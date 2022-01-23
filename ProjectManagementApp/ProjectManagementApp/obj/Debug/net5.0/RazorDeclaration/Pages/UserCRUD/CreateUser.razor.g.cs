@@ -140,7 +140,7 @@ using ProjectManagementApp.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 51 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\CreateUser.razor"
+#line 55 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\CreateUser.razor"
        
     public User user = new User();
     public Developer developer = new Developer();
@@ -154,7 +154,7 @@ using ProjectManagementApp.Services;
     List<Company> listOfCompanies = new List<Company>();
     List<Project> listOfProjects = new List<Project>();
 
-    protected async override Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
         listOfCompanies = companyService.listOfCompanies();
         listOfProjects = projectService.listOfProjects();

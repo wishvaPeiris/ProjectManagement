@@ -10,7 +10,8 @@ namespace DataAccess.Model
     {
         public int companyId { get; set; }
         public int projectId { get; set; }
-
         public Company companyDev { get; set; }
+
+        public ICollection<Ticket> tickets { get; set; }
     }
 }

@@ -25,7 +25,9 @@
             <option value="2">Developer</option>
         </select>
      </div>
-     <div class="form-group">
+     @if (Int16.Parse(selectedUserType) == 2)
+    {
+        <div class="form-group">
         <label for="company_name">Select the company name</label>
         <select id="companies" disabled="@isDisabled" value="@selectedCompany" name="Companies" @onchange = "onSelectedItemCompanies" >
             @foreach (var item in listOfCompanies)
@@ -44,7 +46,9 @@
              <option value="@item.projectId">@item.projectName</option>
            }
         </select>
-    </div>
+    </div> 
+    }
+   
     <button class="btn btn-secondary">Add the User</button>
 </EditForm>
 
@@ -61,7 +65,7 @@
     List<Company> listOfCompanies = new List<Company>();
     List<Project> listOfProjects = new List<Project>();
 
-    protected async override Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
         listOfCompanies = companyService.listOfCompanies();
         listOfProjects = projectService.listOfProjects();

@@ -12,8 +12,6 @@
       </div>
       <div class="modal-body">
         <form>
-            <DataAnnotationsValidator/>
-            <ValidationSummary/>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Intial Company Name:</label>
             <input type="text" class="form-control" id="recipient-name" disabled=true placeholder="@companyName">
@@ -41,13 +39,18 @@
     [Parameter]
     public EventCallback<bool> OnClose { get; set; }
 
+    protected override void OnInitialized()
+    {
+        company = CompanyService.Get(IntialCompanyId);
+        Console.WriteLine("the company" + company);
+    }
+
     private Task ModalCancel()
     {
         return OnClose.InvokeAsync(false);
     }
     private Task ModalOk()
     {
-        company = CompanyService.Get(IntialCompanyId);
         company.CompanyName = newCompanyName;
 
         try

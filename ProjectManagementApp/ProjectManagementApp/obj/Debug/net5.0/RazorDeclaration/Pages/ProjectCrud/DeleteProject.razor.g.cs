@@ -154,12 +154,12 @@ using ProjectManagementApp.Services;
         {
             result = ProjectService.Delete(ProjectId);
             ToastService.ShowSuccess("Project is deleted successfully", "Success!");
+            NavigationManager.NavigateTo("/project");
         }
         catch (Exception)
         {
             ToastService.ShowError("Something went wrong when deletng the Project", "Error");
         }
-        NavigationManager.NavigateTo($"project");
         return OnClose.InvokeAsync(true);
     }
 

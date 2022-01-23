@@ -4,7 +4,8 @@
 @using ProjectManagementApp.Services
 @inject ICompanyService companyService
 @inject IProjectService projectService
-
+@inject IToastService ToastService
+@inject NavigationManager NavigationManager
 
 
 <h3>CreateProject</h3>
@@ -29,7 +30,6 @@
     <button class="btn btn-secondary" @onclick = "@submitProject">Add new project</button>
 </EditForm>
 
-@projectDescription
 
 @code {
     public Project newProject = new Project();
@@ -54,6 +54,15 @@
         newProject.projectDescription = projectDescription;
         newProject.companyProjectId = Int16.Parse(selectedCompany);
         newProject = projectService.create(newProject);
+        if(newProject != null)
+        {
+            ToastService.ShowSuccess("Project is added successfully", "Success!");
+            NavigationManager.NavigateTo("/project");
+        }
+        else
+        {
+            ToastService.ShowError("Something went wrong when adding the Project", "Error");
+        }
     }
 }
 

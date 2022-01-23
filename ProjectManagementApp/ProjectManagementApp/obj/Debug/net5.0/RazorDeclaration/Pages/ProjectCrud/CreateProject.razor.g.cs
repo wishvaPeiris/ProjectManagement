@@ -164,11 +164,22 @@ using ProjectManagementApp.Services;
         newProject.projectDescription = projectDescription;
         newProject.companyProjectId = Int16.Parse(selectedCompany);
         newProject = projectService.create(newProject);
+        if(newProject != null)
+        {
+            ToastService.ShowSuccess("Project is added successfully", "Success!");
+            NavigationManager.NavigateTo("/project");
+        }
+        else
+        {
+            ToastService.ShowError("Something went wrong when adding the Project", "Error");
+        }
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToastService ToastService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IProjectService projectService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ICompanyService companyService { get; set; }
     }

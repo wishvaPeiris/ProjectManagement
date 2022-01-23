@@ -132,7 +132,7 @@ using ProjectManagementApp.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 34 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\EditCompany.razor"
+#line 32 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\EditCompany.razor"
        
     public Company company = new Company();
     [Parameter]
@@ -143,13 +143,18 @@ using ProjectManagementApp.Services;
     [Parameter]
     public EventCallback<bool> OnClose { get; set; }
 
+    protected override void OnInitialized()
+    {
+        company = CompanyService.Get(IntialCompanyId);
+        Console.WriteLine("the company" + company);
+    }
+
     private Task ModalCancel()
     {
         return OnClose.InvokeAsync(false);
     }
     private Task ModalOk()
     {
-        company = CompanyService.Get(IntialCompanyId);
         company.CompanyName = newCompanyName;
 
         try

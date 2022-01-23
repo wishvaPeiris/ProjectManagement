@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace ProjectManagementApp.Services
@@ -34,7 +36,7 @@ namespace ProjectManagementApp.Services
 
         public async Task<Developer> createDev(Developer developer)
         {
-            var userRole = new UserStore<IdentityUser>(_db);
+            var userRole = new UserStore<User>(_db);
             if (developer != null)
             {
                 await userRole.AddToRoleAsync(developer, "developer");

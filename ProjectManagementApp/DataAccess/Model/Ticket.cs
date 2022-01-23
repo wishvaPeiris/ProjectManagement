@@ -15,7 +15,9 @@ namespace DataAccess.Model
         public DateTime taskCreateDate { get; set; }
         public TicketStatus taskStatus { get; set; }
         public int projectId { get; set; }
+        public int assignUserId { get; set; }
 
+        public Developer developer { get; set; }
         public Project project { get; set; }
 
     }
