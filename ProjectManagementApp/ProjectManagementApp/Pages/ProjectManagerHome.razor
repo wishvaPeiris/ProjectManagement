@@ -1,46 +1,117 @@
 ﻿@page "/project_manager_home"
-
 @using DataAccess.Model;
 @using Services;
+@inject NavigationManager NavigationManager
+@inject ICompanyService companyService
+@inject IProjectService projectService
+@inject IUser userService
+@inject ITaskService ticketService
 
-@inject ICompanyService CompanyService
+<div class="container">
+    <div class="heading">
+        <h3>Company Report</h3>
+        <div class="form-group">
+            <label for="company_name">Select the company name</label>
+            <select id="companies" name="Companies" @onchange = "onSelectedItem" >
+                @foreach (var item in listOfCompanies)
+               {
+                    <option value="@item.Id">@item.CompanyName</option>
+               }
+            </select>
+        </div>
+    </div><br/>
+    <div class="section1">
+        <h3>List of Companies</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Developer Email</th>
+              <th scope="col">Project</th>
+              <th scope="col">Tickets in Progress</th>
+              <th scope="col">Tickets Completed</th>
+            </tr>
+          </thead>
+          <tbody>
+              @foreach (var item in userList)
+             {
+                 <tr>
+                      <th scope="row">@count</th>
+                      <td>@item.Email</td>
+                       @{var projectLinqQuery = from value in projectList where value.projectId == item.projectId select new {item.Id,value.projectName };}
+                        @if(projectLinqQuery.Count() != 0)
+                        {
+                             @foreach (var projName in projectLinqQuery)
+                             {
+                                 if(projName.Id == item.Id){
+                                    <td>@projName.projectName</td>
+                                }
+                            }
+                        }else
+                        {
+                         <td>No Projects</td>       
+                        }
+                        @{
+                            var listProjects = taskList 
+                                    .Where(x => (x.projectId == item.projectId)).ToList();
+                            var progressCount = listProjects.Where(y => (y.assignUserId.ToString() == item.Id.ToString())).ToList();
+                            var proTasksList = progressCount.Where(z => (z.taskStatus == DataAccess.Enums.TicketStatus.Progress)).ToList();
+                            var comTasksList = progressCount.Where(z => (z.taskStatus == DataAccess.Enums.TicketStatus.Complete)).ToList();
+                        }
+                        <td>@proTasksList.Count()</td>
+                        <td>@comTasksList.Count()</td>
+                    </tr>
+                    count++;
+                }
+          </tbody>
+        </table>
+    </div>
+</div>
 
 
-<h3>Home</h3>
+<style>
+    .container{
+        margin:0px;
+        padding:0px;
+    }
+    .heading{
+        width:100%;
+        display: flex;
+        justify-content: space-between;
+        background-color: lightblue;
+        padding:10px;
+    }
+    td{
+        text-align:justify;
+    }
+</style>
 
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>twitter</td>
-    </tr>
-  </tbody>
-</table>
 
 
 
 @code {
+    public int count = 1;
+    private string selectedCompany = "1";
+    List<Project> projectList = new List<Project>();
+    List<Developer> userList = new List<Developer>();
+    List<Ticket> taskList = new List<Ticket>();
+    List<Company> listOfCompanies = new List<Company>();
 
+
+    protected async override Task OnInitializedAsync()
+    {
+        taskList = ticketService.listOfTickets();
+        listOfCompanies = companyService.listOfCompanies();
+        userList = userService.listOfDevelopersInCompany(Int16.Parse(selectedCompany));
+        projectList = projectService.listOfProjectsToCompanyIdAsync(Int16.Parse(selectedCompany));
+    }
+
+    public void onSelectedItem(ChangeEventArgs e)
+    {
+        selectedCompany = e.Value.ToString();
+        count = 1;
+        userList = userService.listOfDevelopersInCompany(Int16.Parse(selectedCompany));
+        projectList = projectService.listOfProjectsToCompanyIdAsync(Int16.Parse(selectedCompany));
+    }
 }

@@ -149,6 +149,7 @@ using DataAccess;
 #nullable restore
 #line 73 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyView.razor"
        
+    public int count = 1;
     public bool EditDialogOpen { get; set; }
     public int companyId { get; set; }
     public string intialCompName { get; set; }

@@ -76,11 +76,8 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("assignUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("developerId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("assignUserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("projectId")
                         .HasColumnType("int");
@@ -98,8 +95,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ticketId");
-
-                    b.HasIndex("developerId");
 
                     b.HasIndex("projectId");
 
@@ -349,17 +344,11 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("DataAccess.Model.Ticket", b =>
                 {
-                    b.HasOne("DataAccess.Model.Developer", "developer")
-                        .WithMany("tickets")
-                        .HasForeignKey("developerId");
-
                     b.HasOne("DataAccess.Model.Project", "project")
                         .WithMany("companyTask")
                         .HasForeignKey("projectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("developer");
 
                     b.Navigation("project");
                 });
@@ -436,11 +425,6 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("DataAccess.Model.Project", b =>
                 {
                     b.Navigation("companyTask");
-                });
-
-            modelBuilder.Entity("DataAccess.Model.Developer", b =>
-                {
-                    b.Navigation("tickets");
                 });
 #pragma warning restore 612, 618
         }

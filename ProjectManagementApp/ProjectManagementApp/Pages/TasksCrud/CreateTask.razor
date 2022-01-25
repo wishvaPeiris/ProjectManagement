@@ -1,5 +1,6 @@
 ﻿@using DataAccess.Model
 @using ProjectManagementApp.Services
+@inject IUser userService
 @inject ITaskService TicketService
 @inject IToastService ToastService
 
@@ -20,6 +21,15 @@
             <label for="message-text" class="col-form-label">Ticket Description:</label>
             <textarea id="company_descriptiopn" @bind="ticketDescription" @bind:event="oninput" class = "form-control" />
           </div>
+           <div class="form-group">
+            <label for="company_name">Select the company name</label>
+            <select id="users" name="Users" @onchange = "onSelectedItem"  >
+                @foreach (var item in userList)
+               {
+                   <option value="@item.UserName">@item.UserName</option>
+               }
+            </select>
+        </div>
         </form>
       </div>
       <div class="modal-footer">
@@ -32,7 +42,10 @@
 
 @code {
     public Ticket ticket = new Ticket();
+    public Developer developer = new Developer();
     private bool result = false;
+    private string selectedUser = "1";
+    List<Developer> userList = new List<Developer>();
 
     [Parameter]
     public int projectId { get; set; }
@@ -47,7 +60,12 @@
 
     protected async override Task OnInitializedAsync()
     {
-        
+        userList = userService.listOfDevelopersInProject(projectId);
+    }
+
+    public void onSelectedItem(ChangeEventArgs e)
+    {
+        selectedUser = e.Value.ToString();
     }
 
     private Task ModalCancel()
@@ -57,10 +75,12 @@
 
     private Task ModalOk()
     {
-        ticket.taskTitle = ticketTitle;
+        developer = userService.GetByEmail(selectedUser);
+        ticket.taskTitle = ticketTitle;  
         ticket.taskDescription = ticketDescription;
         ticket.projectId = projectId;
         ticket.taskCreateDate = createdDate;
+        ticket.assignUserId = Guid.Parse(developer.Id);
         ticket.taskStatus = DataAccess.Enums.TicketStatus.New;
 
         result = TicketService.createTicket(ticket);

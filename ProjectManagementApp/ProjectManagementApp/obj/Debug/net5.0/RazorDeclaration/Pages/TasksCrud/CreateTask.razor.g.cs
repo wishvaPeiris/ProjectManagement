@@ -132,10 +132,13 @@ using ProjectManagementApp.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\CreateTask.razor"
+#line 43 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\CreateTask.razor"
        
     public Ticket ticket = new Ticket();
+    public Developer developer = new Developer();
     private bool result = false;
+    private string selectedUser = "1";
+    List<Developer> userList = new List<Developer>();
 
     [Parameter]
     public int projectId { get; set; }
@@ -150,7 +153,12 @@ using ProjectManagementApp.Services;
 
     protected async override Task OnInitializedAsync()
     {
-        
+        userList = userService.listOfDevelopersInProject(projectId);
+    }
+
+    public void onSelectedItem(ChangeEventArgs e)
+    {
+        selectedUser = e.Value.ToString();
     }
 
     private Task ModalCancel()
@@ -160,10 +168,12 @@ using ProjectManagementApp.Services;
 
     private Task ModalOk()
     {
-        ticket.taskTitle = ticketTitle;
+        developer = userService.GetByEmail(selectedUser);
+        ticket.taskTitle = ticketTitle;  
         ticket.taskDescription = ticketDescription;
         ticket.projectId = projectId;
         ticket.taskCreateDate = createdDate;
+        ticket.assignUserId = Guid.Parse(developer.Id);
         ticket.taskStatus = DataAccess.Enums.TicketStatus.New;
 
         result = TicketService.createTicket(ticket);
@@ -185,6 +195,7 @@ using ProjectManagementApp.Services;
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToastService ToastService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ITaskService TicketService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUser userService { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -47,8 +47,8 @@ namespace ProjectManagementApp
                 .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI().AddDefaultTokenProviders();
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("AdminOnly", p => p.RequireClaim("Position", "Admin"));
-                options.AddPolicy("DeveloperOnly", p => p.RequireClaim("Position", "Developer"));
+                options.AddPolicy("AdminOnly", p => p.RequireRole("Admin"));
+                options.AddPolicy("DeveloperOnly", p => p.RequireRole("Developer"));
             });
         }
 

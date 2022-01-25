@@ -5,6 +5,7 @@
 @using ProjectManagementApp.Pages.TasksCrud.TaskboardComponents
 @using ProjectManagementApp.Services
 @inject IUser Userservice
+@inject IProjectService projectService
 @inject ITaskService TicketService
 
 <div class="task-board-heading">
@@ -32,6 +33,9 @@
     List<Ticket> Tickets = new List<Ticket>();
     public bool EditDialogOpen { get; set; }
     public int projectID { get; set; }
+    public Project projectDetails = new Project();
+    public Ticket ticketStatus = new Ticket();
+    private bool result = false;
 
     string lastUpdatedJob = "";
     private string checkName;
@@ -53,7 +57,7 @@
     void HandleStatusUpdated(Ticket updateTicket)
     {
         lastUpdatedJob = updateTicket.taskDescription;
-        // from here the ticket status can be updated after each change
+        result = TicketService.Upate(updateTicket);
     }
 
     private void onCreateDialogClose(bool accepted)

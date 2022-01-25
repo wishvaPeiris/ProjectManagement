@@ -8,10 +8,12 @@
 @inject IProjectService projectService
 @inject IUser userService
 @inject NavigationManager NavigationManager
-<h3>UserView</h3>
-<button class = "btn btn-dark" @onclick = "addNewUser"><i class="material-icons">add</i>Add user</button>
 
 <div class="container">
+     <div class="heading">
+        <h3>Users added in the project Manager</h3>
+        <button class = "btn btn-dark" @onclick = "addNewUser"><i class="material-icons">add</i>Add user</button>
+    </div><br/>
     <div class="section1">
         <h3>List of all the projects</h3>
         <table class="table">
@@ -30,7 +32,7 @@
                 @foreach (var item in userList)
                 {
                    <tr>
-                      <th scope="row">@item.Id</th>
+                      <th scope="row">@count</th>
                       <td>@item.UserName</td>
                       <td>@item.Email</td>
                       <td>@item.userContactNo</td>
@@ -57,7 +59,8 @@
                           </button>
                       </td>
                     </tr>
-               }
+                    count++;
+                }
           </tbody>
         </table>
     </div>
@@ -91,7 +94,7 @@
 </style>
 
 @code {
-    public int count = 0;
+    public int count = 1;
     public bool EditDialogOpen { get; set; }
     public bool DeleteDialogOpen { get; set; }
     public string userId { get; set; }

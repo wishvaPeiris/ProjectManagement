@@ -7,6 +7,7 @@ namespace ProjectManagementApp.Services
     {
         bool createTicket(Ticket ticket);
         Ticket Get(int id);
+        List<Ticket> listOfTickets();
         List<Ticket> listOfTicketsForProject(int projectID);
         bool Upate(Ticket ticket);
         bool Delete(int ticketID);

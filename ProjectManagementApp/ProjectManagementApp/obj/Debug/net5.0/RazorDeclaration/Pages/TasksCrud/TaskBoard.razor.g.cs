@@ -154,12 +154,15 @@ using ProjectManagementApp.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 30 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
+#line 31 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskBoard.razor"
        
 
     List<Ticket> Tickets = new List<Ticket>();
     public bool EditDialogOpen { get; set; }
     public int projectID { get; set; }
+    public Project projectDetails = new Project();
+    public Ticket ticketStatus = new Ticket();
+    private bool result = false;
 
     string lastUpdatedJob = "";
     private string checkName;
@@ -181,7 +184,7 @@ using ProjectManagementApp.Services;
     void HandleStatusUpdated(Ticket updateTicket)
     {
         lastUpdatedJob = updateTicket.taskDescription;
-        // from here the ticket status can be updated after each change
+        result = TicketService.Upate(updateTicket);
     }
 
     private void onCreateDialogClose(bool accepted)
@@ -206,6 +209,7 @@ using ProjectManagementApp.Services;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ITaskService TicketService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IProjectService projectService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUser Userservice { get; set; }
     }
 }

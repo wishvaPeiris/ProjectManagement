@@ -32,7 +32,7 @@
              {
 
                   <tr>
-                      <th scope="row">@item.Id</th>
+                      <th scope="row">@count</th>
                       <td>@item.CompanyName</td>
                       <td>@item.CreatedDate</td>
                       <td>@item.companyProjects.Count()</td>
@@ -42,8 +42,8 @@
                           <button class = "btn btn-dark">Delete company</button>
                       </td>
                     </tr>
-
-             }
+                     count++;
+                }
           </tbody>
         </table>
     </div>
@@ -71,6 +71,7 @@
 
 
 @code {
+    public int count = 1;
     public bool EditDialogOpen { get; set; }
     public int companyId { get; set; }
     public string intialCompName { get; set; }

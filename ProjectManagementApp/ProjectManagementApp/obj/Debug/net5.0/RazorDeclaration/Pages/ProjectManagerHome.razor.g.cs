@@ -111,14 +111,14 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\ProjectManagerHome.razor"
+#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\ProjectManagerHome.razor"
 using DataAccess.Model;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\ProjectManagerHome.razor"
+#line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\ProjectManagerHome.razor"
 using Services;
 
 #line default
@@ -132,7 +132,41 @@ using Services;
         {
         }
         #pragma warning restore 1998
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ICompanyService CompanyService { get; set; }
+#nullable restore
+#line 93 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\ProjectManagerHome.razor"
+       
+    public int count = 1;
+    private string selectedCompany = "1";
+    List<Project> projectList = new List<Project>();
+    List<Developer> userList = new List<Developer>();
+    List<Ticket> taskList = new List<Ticket>();
+    List<Company> listOfCompanies = new List<Company>();
+
+
+    protected async override Task OnInitializedAsync()
+    {
+        taskList = ticketService.listOfTickets();
+        listOfCompanies = companyService.listOfCompanies();
+        userList = userService.listOfDevelopersInCompany(Int16.Parse(selectedCompany));
+        projectList = projectService.listOfProjectsToCompanyIdAsync(Int16.Parse(selectedCompany));
+    }
+
+    public void onSelectedItem(ChangeEventArgs e)
+    {
+        selectedCompany = e.Value.ToString();
+        count = 1;
+        userList = userService.listOfDevelopersInCompany(Int16.Parse(selectedCompany));
+        projectList = projectService.listOfProjectsToCompanyIdAsync(Int16.Parse(selectedCompany));
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ITaskService ticketService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUser userService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IProjectService projectService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ICompanyService companyService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591

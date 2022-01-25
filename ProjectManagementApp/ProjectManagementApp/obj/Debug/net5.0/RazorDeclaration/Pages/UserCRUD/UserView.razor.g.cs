@@ -154,9 +154,9 @@ using ProjectManagementApp.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 93 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\UserView.razor"
+#line 96 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\UserView.razor"
        
-    public int count = 0;
+    public int count = 1;
     public bool EditDialogOpen { get; set; }
     public bool DeleteDialogOpen { get; set; }
     public string userId { get; set; }

@@ -1,6 +1,7 @@
 ﻿using DataAccess;
 using DataAccess.Model;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ProjectManagementApp.Services
 {
@@ -41,6 +42,11 @@ namespace ProjectManagementApp.Services
         public Ticket Get(int id)
         {
             return _db.tickets.Find(id);
+        }
+
+        public List<Ticket> listOfTickets()
+        {
+            return _db.tickets.ToList();
         }
 
         public List<Ticket> listOfTicketsForProject(int projectID)
