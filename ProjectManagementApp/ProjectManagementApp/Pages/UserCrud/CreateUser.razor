@@ -5,6 +5,8 @@
 @inject ICompanyService companyService
 @inject IProjectService projectService
 @inject IUser userService
+@inject IToastService ToastService
+@inject NavigationManager NavigationManager
 
 <h3>CreateUser</h3>
 <EditForm Model = "@user" OnValidSubmit="@HandleOnValidSubmit" class="col-7 p-0">
@@ -92,6 +94,7 @@
     public void onSelectedItemProject(ChangeEventArgs e)
     {
         selectedProject = e.Value.ToString();
+        Console.WriteLine(selectedProject);
     }
 
     public void HandleOnValidSubmit()
@@ -106,6 +109,15 @@
             developer.companyId = Int16.Parse(selectedCompany);
             developer.projectId = Int16.Parse(selectedProject);
             userService.createDev(developer);
+            if(developer != null)
+            {
+                ToastService.ShowSuccess("Developer is added successfully", "Success!");
+                NavigationManager.NavigateTo("/user");
+            }
+            else
+            {
+                ToastService.ShowError("Something went wrong when adding the Developer", "Error");
+            }
         }
         else
         {
@@ -115,6 +127,15 @@
             user.NormalizedEmail = userEmail.ToUpper();
             user.userContactNo = userContact;
             userService.createAsync(user);
+            if(user != null)
+            {
+                ToastService.ShowSuccess("Admin is added successfully", "Success!");
+                NavigationManager.NavigateTo("/user");
+            }
+            else
+            {
+                ToastService.ShowError("Something went wrong when adding the Admin", "Error");
+            }
         }
     }
 }

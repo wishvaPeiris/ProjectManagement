@@ -50,15 +50,12 @@ namespace ProjectManagementApp.Services
 
         public bool DeleteDev(string id)
         {
-            var developer = new Developer();
-            foreach (var item in _db.developers)
+            var dbDeveloper = _db.developers.Find(id);
+            if (dbDeveloper != null)
             {
-                if (item.Id.Equals(id))
-                {
-                    _db.Remove(item);
-                    _db.SaveChanges();
-                    return true;
-                }
+                _db.Remove(dbDeveloper);
+                _db.SaveChanges();
+                return true;
             }
             return false;
         }

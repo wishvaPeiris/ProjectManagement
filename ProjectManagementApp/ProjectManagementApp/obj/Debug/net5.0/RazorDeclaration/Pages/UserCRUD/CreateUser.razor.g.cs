@@ -140,7 +140,7 @@ using ProjectManagementApp.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 55 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\CreateUser.razor"
+#line 57 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\CreateUser.razor"
        
     public User user = new User();
     public Developer developer = new Developer();
@@ -181,6 +181,7 @@ using ProjectManagementApp.Services;
     public void onSelectedItemProject(ChangeEventArgs e)
     {
         selectedProject = e.Value.ToString();
+        Console.WriteLine(selectedProject);
     }
 
     public void HandleOnValidSubmit()
@@ -195,6 +196,15 @@ using ProjectManagementApp.Services;
             developer.companyId = Int16.Parse(selectedCompany);
             developer.projectId = Int16.Parse(selectedProject);
             userService.createDev(developer);
+            if(developer != null)
+            {
+                ToastService.ShowSuccess("Developer is added successfully", "Success!");
+                NavigationManager.NavigateTo("/user");
+            }
+            else
+            {
+                ToastService.ShowError("Something went wrong when adding the Developer", "Error");
+            }
         }
         else
         {
@@ -204,12 +214,23 @@ using ProjectManagementApp.Services;
             user.NormalizedEmail = userEmail.ToUpper();
             user.userContactNo = userContact;
             userService.createAsync(user);
+            if(user != null)
+            {
+                ToastService.ShowSuccess("Admin is added successfully", "Success!");
+                NavigationManager.NavigateTo("/user");
+            }
+            else
+            {
+                ToastService.ShowError("Something went wrong when adding the Admin", "Error");
+            }
         }
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToastService ToastService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUser userService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IProjectService projectService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ICompanyService companyService { get; set; }
