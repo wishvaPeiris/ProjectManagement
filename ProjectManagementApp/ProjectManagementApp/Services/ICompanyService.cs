@@ -8,7 +8,7 @@ namespace ProjectManagementApp.Services
         bool create(Company company);
         Company Get(int id);
         List<Company> listOfCompanies();
-        Company Upate(Company company); 
-        void Delete(int id);    
+        Company Upate(Company company);
+        bool Delete(int id);    
     }
 }

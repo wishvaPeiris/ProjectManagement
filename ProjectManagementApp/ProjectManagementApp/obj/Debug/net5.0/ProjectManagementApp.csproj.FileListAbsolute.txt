@@ -239,3 +239,5 @@ C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagemen
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\TasksCrud\EditTicket.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Pages\TasksCrud\DeleteTicket.razor.g.cs
 C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\TasksCrud\DeleteTicket.razor.g.cs
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\RazorDeclaration\Pages\CompanyCrud\DeleteCompany.razor.g.cs
+C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\obj\Debug\net5.0\Razor\Pages\CompanyCrud\DeleteCompany.razor.g.cs

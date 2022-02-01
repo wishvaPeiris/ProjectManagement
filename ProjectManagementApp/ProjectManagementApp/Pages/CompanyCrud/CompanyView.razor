@@ -39,7 +39,7 @@
                       <td>@item.companyDevs.Count()</td>
                       <td>
                           <button type="button" class="btn btn-primary" id="@item.Id" data-bs-toggle="modal" data-bs-target="#EditCompany" @onclick = "@((args) =>openEditDialog(@item.Id,@item.CompanyName) )">Edit company</button>
-                          <button class = "btn btn-dark">Delete company</button>
+                          <button class = "btn btn-dark" id="@item.Id" @onclick = "@((args) =>openDeletDialog(@item.Id) )">Delete company</button>
                       </td>
                     </tr>
                      count++;
@@ -50,6 +50,11 @@
     @if (EditDialogOpen)
     {
        <EditCompany IntialCompanyId ="@companyId" companyName ="@intialCompName" OnClose = "@onEditDialogClose"></EditCompany>
+    }
+
+     @if (DeleteDialogOpen)
+    {
+        <DeleteCompany Title = "Delete the Company" Message = "Are you sure you want to delete the following company" CompanyId = "@companyId" OnClose = "@onDeleteDialogClose"></DeleteCompany>
     }
     
 </div>
@@ -73,6 +78,7 @@
 @code {
     public int count = 1;
     public bool EditDialogOpen { get; set; }
+    public bool DeleteDialogOpen { get; set; }
     public int companyId { get; set; }
     public string intialCompName { get; set; }
     List<Project> projectList = new List<Project>();
@@ -110,6 +116,24 @@
         intialCompName = compName;
         companyId = ButtonId;
         onEditDialogOpen();
+    }
+
+     private void onDeleteDialogClose(bool accepted)
+    {
+        DeleteDialogOpen = false;
+        StateHasChanged();
+    }
+
+    private void onDeleteDialogOpen()
+    {
+        DeleteDialogOpen = true;
+        StateHasChanged();
+    }
+
+    private void openDeletDialog(int ButtonId)
+    {
+        companyId = ButtonId;
+        onDeleteDialogOpen();
     }
 
     private void addNewCompany()

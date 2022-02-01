@@ -110,117 +110,13 @@ using System.Security.Claims;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyView.razor"
-using DataAccess.Model;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 4 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyView.razor"
-using ProjectManagementApp.Services;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 5 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyView.razor"
-using DataAccess;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyView.razor"
-           [Authorize(Policy = "AdminOnly")]
-
-#line default
-#line hidden
-#nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/company")]
-    public partial class CompanyView : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class DeleteCompanyrazor : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 78 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyView.razor"
-       
-    public int count = 1;
-    public bool EditDialogOpen { get; set; }
-    public bool DeleteDialogOpen { get; set; }
-    public int companyId { get; set; }
-    public string intialCompName { get; set; }
-    List<Project> projectList = new List<Project>();
-    List<Developer> userList = new List<Developer>();
-    List<Company> listOfCompanies = new List<Company>();
-
-    protected async override Task OnInitializedAsync()
-    {
-        listOfCompanies = companyService.listOfCompanies();
-
-        foreach (var item in listOfCompanies)
-        {
-            projectList = projectService.listOfProjectsToCompanyIdAsync(item.Id);
-            userList = userService.listOfDevelopersInCompany(item.Id);
-            item.companyProjects = projectList;
-            item.companyDevs = userList;
-
-        }
-    }
-
-    private void onEditDialogClose(bool accepted)
-    {
-        EditDialogOpen = false;
-        StateHasChanged();
-    }
-
-    private void onEditDialogOpen()
-    {
-        EditDialogOpen = true;
-        StateHasChanged();
-    }
-
-    private void openEditDialog(int ButtonId,string compName)
-    {
-        intialCompName = compName;
-        companyId = ButtonId;
-        onEditDialogOpen();
-    }
-
-     private void onDeleteDialogClose(bool accepted)
-    {
-        DeleteDialogOpen = false;
-        StateHasChanged();
-    }
-
-    private void onDeleteDialogOpen()
-    {
-        DeleteDialogOpen = true;
-        StateHasChanged();
-    }
-
-    private void openDeletDialog(int ButtonId)
-    {
-        companyId = ButtonId;
-        onDeleteDialogOpen();
-    }
-
-    private void addNewCompany()
-    {
-        NavigationManager.NavigateTo("/company/add");
-    }
-
-#line default
-#line hidden
-#nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUser userService { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IProjectService projectService { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ICompanyService companyService { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591

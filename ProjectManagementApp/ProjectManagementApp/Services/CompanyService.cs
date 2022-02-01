@@ -27,9 +27,17 @@ namespace ProjectManagementApp.Services
             return false;
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
-            throw new System.NotImplementedException();
+            var dbCompany = _db.companies.Find(id);
+
+            if (dbCompany != null)
+            {
+                _db.Remove(dbCompany);
+                _db.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
         public Company Get(int id)
