@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace ProjectManagementApp.Pages.TasksCrud.TaskboardComponents
+namespace ProjectManagementApp.Pages.TasksCrud
 {
     #line hidden
     using System;
@@ -111,20 +111,20 @@ using System.Security.Claims;
 #line hidden
 #nullable disable
 #nullable restore
-#line 1 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskboardComponents\ProjectTicket.razor"
-using DataAccess.Enums;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskboardComponents\ProjectTicket.razor"
+#line 1 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\DeleteTicket.razor"
 using DataAccess.Model;
 
 #line default
 #line hidden
 #nullable disable
-    public partial class ProjectTicket : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 2 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\DeleteTicket.razor"
+using ProjectManagementApp.Services;
+
+#line default
+#line hidden
+#nullable disable
+    public partial class DeleteTicket : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -132,56 +132,43 @@ using DataAccess.Model;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 26 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\TaskboardComponents\ProjectTicket.razor"
+#line 26 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\DeleteTicket.razor"
        
-    [CascadingParameter] TicketContainer Container { get; set; }
-    [Parameter] public Ticket Ticket { get; set; }
-    public bool EditDialogOpen { get; set; }
-    public bool DeleteDialogOpen { get; set; }
+    bool result = false;
+    [Parameter]
+    public string Title { get; set; }
+    [Parameter]
+    public string Message { get; set; }
+    [Parameter]
+    public int TicketId { get; set; }
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
 
-    private void HandleDragStart(Ticket selectedTicket)
+    private Task ModalCancel()
     {
-        Container.Payload = selectedTicket;
+        return OnClose.InvokeAsync(false);
     }
-
-    private void onEditDialogClose(bool accepted)
+    private Task ModalOk()
     {
-        EditDialogOpen = false;
-        StateHasChanged();
+        try
+        {
+            result = TicketService.Delete(TicketId);
+            ToastService.ShowSuccess("Ticket is deleted successfully", "Success!");
+            NavigationManager.NavigateTo("/taskboard");
+        }
+        catch (Exception)
+        {
+            ToastService.ShowError("Something went wrong when deletng the Ticket", "Error");
+        }
+        return OnClose.InvokeAsync(true);
     }
-
-    private void onEditDialogOpen()
-    {
-        EditDialogOpen = true;
-        StateHasChanged();
-    }
-
-    private void openEditDialog()
-    {
-        onEditDialogOpen();
-    }
-
-    private void onDeleteDialogClose(bool accepted)
-    {
-        DeleteDialogOpen = false;
-        StateHasChanged();
-    }
-
-    private void onDeleteDialogOpen()
-    {
-        DeleteDialogOpen = true;
-        StateHasChanged();
-    }
-
-    private void openDeletDialog()
-    {
-        onDeleteDialogOpen();
-    }
-
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToastService ToastService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ITaskService TicketService { get; set; }
     }
 }
 #pragma warning restore 1591

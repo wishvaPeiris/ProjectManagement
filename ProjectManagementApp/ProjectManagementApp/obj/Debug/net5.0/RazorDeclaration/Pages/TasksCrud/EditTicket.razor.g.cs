@@ -132,13 +132,17 @@ using ProjectManagementApp.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\EditTicket.razor"
+#line 43 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\EditTicket.razor"
        
     public Ticket ticket = new Ticket();
     private bool result = false;
+    private Guid selectedUser;
+    List<Developer> userList = new List<Developer>();
 
     [Parameter]
     public int ticketID { get; set; }
+    [Parameter]
+    public int projectID { get; set; }
 
     public string ticketTitle { get; set; }
     public string ticketDescription { get; set; }
@@ -151,6 +155,14 @@ using ProjectManagementApp.Services;
     protected async override Task OnInitializedAsync()
     {
         ticket = TicketService.Get(ticketID);
+        selectedUser = ticket.assignUserId;
+        userList = userService.listOfDevelopersInProject(projectID);
+    }
+
+    public void onSelectedItem(ChangeEventArgs e)
+    {
+        selectedUser = Guid.Parse(e.Value.ToString());
+        Console.WriteLine(selectedUser);
     }
 
     private Task ModalCancel()
@@ -162,6 +174,7 @@ using ProjectManagementApp.Services;
     {
         ticket.taskTitle = ticketTitle;
         ticket.taskDescription = ticketDescription;
+        ticket.assignUserId = selectedUser;
 
         result = TicketService.Upate(ticket);
 
@@ -181,6 +194,7 @@ using ProjectManagementApp.Services;
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToastService ToastService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ITaskService TicketService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUser userService { get; set; }
     }
 }
 #pragma warning restore 1591

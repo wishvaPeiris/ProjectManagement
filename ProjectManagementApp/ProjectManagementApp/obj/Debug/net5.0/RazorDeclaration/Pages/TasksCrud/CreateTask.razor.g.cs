@@ -132,7 +132,7 @@ using ProjectManagementApp.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 43 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\CreateTask.razor"
+#line 51 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\TasksCrud\CreateTask.razor"
        
     public Ticket ticket = new Ticket();
     public Developer developer = new Developer();
@@ -181,6 +181,7 @@ using ProjectManagementApp.Services;
         if (result)
          {
             ToastService.ShowSuccess("Task is added successfully", "Success!");
+            NavigationManager.NavigateTo("/taskboard");
          }
         else
           {
@@ -193,6 +194,7 @@ using ProjectManagementApp.Services;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToastService ToastService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ITaskService TicketService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUser userService { get; set; }

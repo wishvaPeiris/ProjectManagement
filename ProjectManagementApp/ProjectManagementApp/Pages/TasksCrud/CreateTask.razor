@@ -3,13 +3,14 @@
 @inject IUser userService
 @inject ITaskService TicketService
 @inject IToastService ToastService
+@inject NavigationManager NavigationManager;
 
 <div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Create Ticket</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick = "@ModalCancel"></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @onclick = "@ModalCancel"></button>
       </div>
       <div class="modal-body">
         <form>
@@ -39,6 +40,13 @@
     </div>
   </div>
 </div>
+
+
+<style>
+     .class{
+        background : "#0000";
+    }
+</style>
 
 @code {
     public Ticket ticket = new Ticket();
@@ -88,6 +96,7 @@
         if (result)
          {
             ToastService.ShowSuccess("Task is added successfully", "Success!");
+            NavigationManager.NavigateTo("/taskboard");
          }
         else
           {

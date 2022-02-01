@@ -161,8 +161,10 @@ using ProjectManagementApp.Services;
 
     private Task ModalOk()
     {
-        developer.UserName = newUserName;
+        developer.UserName = newUserEmail;
         developer.Email = newUserEmail;
+        developer.NormalizedEmail = newUserEmail.ToUpper();
+        developer.NormalizedUserName = newUserEmail.ToUpper();
         developer.userContactNo = newUserContactNo;
 
         try

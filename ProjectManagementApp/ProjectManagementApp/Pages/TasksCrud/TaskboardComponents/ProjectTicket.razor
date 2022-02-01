@@ -5,38 +5,67 @@
     <p class="description">@Ticket.taskDescription</p>
     @if(Ticket.taskStatus == TicketStatus.New)
     {
-        <button type="button" class="btn btn-success" id="@Ticket.ticketId" data-bs-toggle="modal" data-bs-target="#EditProject">
+        <button type="button" class="btn btn-success" id="@Ticket.ticketId" data-bs-toggle="modal" data-bs-target="#EditProject" @onclick = "@((args) =>openEditDialog())">
            <i class="material-icons">edit</i>
         </button>
-        <button type="button" class="btn btn-danger" id="@Ticket.ticketId" data-bs-toggle="modal" data-bs-target="#DeleteProject">
+        <button type="button" class="btn btn-danger" id="@Ticket.ticketId" data-bs-toggle="modal" data-bs-target="#DeleteProject" @onclick = "@((args) =>openDeletDialog())">
            <i class="material-icons">delete</i>
         </button>
     }
 </li>
+ @if (EditDialogOpen)
+    {
+       <EditTicket ticketID ="@Ticket.ticketId" projectID = "@Ticket.projectId" OnClose = "@onEditDialogClose"></EditTicket>
+    }
+
+    @if (DeleteDialogOpen)
+    {
+        <DeleteTicket Title = "Delete the Ticket" Message = "Are you sure you want to delete the following ticket" TicketId = "@Ticket.ticketId" OnClose = "@onDeleteDialogClose"></DeleteTicket>
+    }
 
 @code {
     [CascadingParameter] TicketContainer Container { get; set; }
     [Parameter] public Ticket Ticket { get; set; }
+    public bool EditDialogOpen { get; set; }
+    public bool DeleteDialogOpen { get; set; }
 
     private void HandleDragStart(Ticket selectedTicket)
     {
         Container.Payload = selectedTicket;
     }
 
-    private void onCreateDialogClose(bool accepted)
+    private void onEditDialogClose(bool accepted)
     {
-        //EditDialogOpen = false;
+        EditDialogOpen = false;
         StateHasChanged();
     }
 
-    private void onCreateDialogOpen()
+    private void onEditDialogOpen()
     {
-        //EditDialogOpen = true;
+        EditDialogOpen = true;
         StateHasChanged();
     }
 
-    private void openCreateDialog()
+    private void openEditDialog()
     {
-        onCreateDialogOpen();
+        onEditDialogOpen();
     }
+
+    private void onDeleteDialogClose(bool accepted)
+    {
+        DeleteDialogOpen = false;
+        StateHasChanged();
+    }
+
+    private void onDeleteDialogOpen()
+    {
+        DeleteDialogOpen = true;
+        StateHasChanged();
+    }
+
+    private void openDeletDialog()
+    {
+        onDeleteDialogOpen();
+    }
+
 }
