@@ -2,6 +2,7 @@
 @using DataAccess.Model
 @using ProjectManagementApp.Services
 @inject IToastService ToastService
+@inject NavigationManager NavigationManager
 
 @inject ICompanyService CompanyService
 
@@ -34,8 +35,8 @@
         company.CreatedDate = createdDate;
         createCompany = CompanyService.create(company);
         if(createCompany){
-            
             ToastService.ShowSuccess("Company is added successfully", "Success!");
+            NavigationManager.NavigateTo("/company");
         }
         else{
             ToastService.ShowError("Something went wrong when creating the Company", "Error");

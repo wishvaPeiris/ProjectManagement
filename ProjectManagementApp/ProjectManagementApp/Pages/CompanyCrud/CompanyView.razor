@@ -38,8 +38,8 @@
                       <td>@item.companyProjects.Count()</td>
                       <td>@item.companyDevs.Count()</td>
                       <td>
-                          <button type="button" class="btn btn-primary" id="@item.Id" data-bs-toggle="modal" data-bs-target="#EditCompany" @onclick = "@((args) =>openEditDialog(@item.Id,@item.CompanyName) )">Edit company</button>
-                          <button class = "btn btn-dark" id="@item.Id" @onclick = "@((args) =>openDeletDialog(@item.Id) )">Delete company</button>
+                          <button type="button" class="btn btn-success" id="@item.Id" data-bs-toggle="modal" data-bs-target="#EditCompany" @onclick = "@((args) =>openEditDialog(@item.Id,@item.CompanyName) )"><i class="material-icons">edit</i></button>
+                          <button class="btn btn-danger" id="@item.Id" @onclick = "@((args) =>openDeletDialog(@item.Id) )"><i class="material-icons">delete</i></button>
                       </td>
                     </tr>
                      count++;

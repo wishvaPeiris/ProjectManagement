@@ -117,6 +117,13 @@ using DataAccess.Model;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\Index.razor"
+using ProjectManagementApp.Services;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
     public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -126,14 +133,32 @@ using DataAccess.Model;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 11 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\Index.razor"
+#line 62 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\Index.razor"
       
     [Parameter]
     public string userLoginEmail { get; set; }
+    List<Company> listOfCompanies = new List<Company>();
+    List<Project> listOfProjects = new List<Project>();
+    List<Developer> userList = new List<Developer>();
 
     protected async override Task OnInitializedAsync()
     {
-       Console.WriteLine(userLoginEmail);
+        listOfCompanies = companyService.listOfCompanies();
+        listOfProjects = projectService.listOfProjects();
+        userList = userService.listOfUsers();
+    }
+
+    public void users()
+    {
+        NavigationManager.NavigateTo("/user");
+    }
+    public void companies()
+    {
+        NavigationManager.NavigateTo("/company");
+    }
+    public void projects()
+    {
+        NavigationManager.NavigateTo("/project");
     }
 
    
@@ -141,6 +166,10 @@ using DataAccess.Model;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUser userService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IProjectService projectService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ICompanyService companyService { get; set; }
     }
 }
 #pragma warning restore 1591

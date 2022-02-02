@@ -14,12 +14,8 @@
       <div class="modal-body">
         <form>
           <div class="mb-3">
-            <label for="message-text" class="col-form-label">New Username:</label>
-            <input type="text" class="form-control" id="recipient-name" @bind-value = "@newUserName">
-          </div>
-          <div class="mb-3">
             <label for="message-text" class="col-form-label">Updated Email:</label>
-            <input type="text" class="form-control" id="recipient-name" @bind-value = "@newUserEmail">
+            <input type="text" class="form-control" id="recipient-name" @bind-value = "@newUserEmail" placeholder="@newUserEmail">
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label">New User Contact No:</label>
@@ -42,7 +38,6 @@
 
     [Parameter]
     public string userID { get; set; }
-    public string newUserName { get; set; }
     public string newUserEmail { get; set; }
     public string newUserContactNo { get; set; }
 
@@ -52,7 +47,6 @@
     protected async override Task OnInitializedAsync()
     {
         developer = UserService.GetDev(userID);
-        newUserName = developer.UserName;
         newUserEmail = developer.Email;
         newUserContactNo = developer.userContactNo;
     }

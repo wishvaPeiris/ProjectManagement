@@ -28,40 +28,51 @@
               <th scope="col">No</th>
               <th scope="col">Developer Email</th>
               <th scope="col">Project</th>
-              <th scope="col">Tickets in Progress</th>
-              <th scope="col">Tickets Completed</th>
+              <th scope="col" class="task-column" >Tickets in Progress</th>
+              <th scope="col" class="task-column" >Tickets Completed</th>
             </tr>
           </thead>
           <tbody>
-              @foreach (var item in userList)
-             {
-                 <tr>
-                      <th scope="row">@count</th>
-                      <td>@item.Email</td>
-                       @{var projectLinqQuery = from value in projectList where value.projectId == item.projectId select new {item.Id,value.projectName };}
-                        @if(projectLinqQuery.Count() != 0)
-                        {
-                             @foreach (var projName in projectLinqQuery)
-                             {
-                                 if(projName.Id == item.Id){
-                                    <td>@projName.projectName</td>
+              @if(@userList.Count() != 0 ){
+                  @foreach (var item in userList)
+                     {
+                         <tr>
+                              <th scope="row">@count</th>
+                              <td>@item.Email</td>
+                               @{var projectLinqQuery = from value in projectList where value.projectId == item.projectId select new {item.Id,value.projectName };}
+                                @if(projectLinqQuery.Count() != 0)
+                                {
+                                     @foreach (var projName in projectLinqQuery)
+                                     {
+                                         if(projName.Id == item.Id){
+                                            <td>@projName.projectName</td>
+                                        }
+                                    }
+                                }else
+                                {
+                                 <td>No Projects</td>       
                                 }
-                            }
-                        }else
-                        {
-                         <td>No Projects</td>       
+                                @{
+                                    var listProjects = taskList 
+                                            .Where(x => (x.projectId == item.projectId)).ToList();
+                                    var progressCount = listProjects.Where(y => (y.assignUserId.ToString() == item.Id.ToString())).ToList();
+                                    var proTasksList = progressCount.Where(z => (z.taskStatus == DataAccess.Enums.TicketStatus.Progress)).ToList();
+                                    var comTasksList = progressCount.Where(z => (z.taskStatus == DataAccess.Enums.TicketStatus.Complete)).ToList();
+                                }
+                                <td class="task-column">@proTasksList.Count()</td>
+                                <td class="task-column">@comTasksList.Count()</td>
+                            </tr>
+                            count++;
                         }
-                        @{
-                            var listProjects = taskList 
-                                    .Where(x => (x.projectId == item.projectId)).ToList();
-                            var progressCount = listProjects.Where(y => (y.assignUserId.ToString() == item.Id.ToString())).ToList();
-                            var proTasksList = progressCount.Where(z => (z.taskStatus == DataAccess.Enums.TicketStatus.Progress)).ToList();
-                            var comTasksList = progressCount.Where(z => (z.taskStatus == DataAccess.Enums.TicketStatus.Complete)).ToList();
-                        }
-                        <td>@proTasksList.Count()</td>
-                        <td>@comTasksList.Count()</td>
-                    </tr>
-                    count++;
+
+                }
+                else
+                {
+                  <td>1</td>
+                  <td>No Developers</td>
+                  <td>No Projects</td>
+                  <td class="task-column">0</td>
+                  <td class="task-column">0</td>  
                 }
           </tbody>
         </table>
@@ -81,8 +92,8 @@
         background-color: lightblue;
         padding:10px;
     }
-    td{
-        text-align:justify;
+    .task-column{
+        text-align:center;
     }
 </style>
 

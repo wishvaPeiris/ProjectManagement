@@ -133,7 +133,7 @@ using ProjectManagementApp.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 20 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyCreate.razor"
+#line 21 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\CompanyCrud\CompanyCreate.razor"
        
     public Company company = new Company();
     bool createCompany = false;
@@ -151,8 +151,8 @@ using ProjectManagementApp.Services;
         company.CreatedDate = createdDate;
         createCompany = CompanyService.create(company);
         if(createCompany){
-            
             ToastService.ShowSuccess("Company is added successfully", "Success!");
+            NavigationManager.NavigateTo("/company");
         }
         else{
             ToastService.ShowError("Something went wrong when creating the Company", "Error");
@@ -163,6 +163,7 @@ using ProjectManagementApp.Services;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ICompanyService CompanyService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToastService ToastService { get; set; }
     }
 }

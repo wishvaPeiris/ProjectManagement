@@ -133,7 +133,7 @@ using Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 93 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\ProjectManagerHome.razor"
+#line 104 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\ProjectManagerHome.razor"
        
     public int count = 1;
     private string selectedCompany = "1";

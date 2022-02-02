@@ -12,7 +12,7 @@
 <div class="container">
      <div class="heading">
         <h3>Users added in the project Manager</h3>
-        <button class = "btn btn-dark" @onclick = "addNewUser"><i class="material-icons">add</i>Add user</button>
+        <button class = "btn btn-dark" @onclick = "addNewUser">Add user</button>
     </div><br/>
     <div class="section1">
         <h3>List of all the projects</h3>
@@ -24,7 +24,7 @@
               <th scope="col">Email</th>
               <th scope="col">Contact No</th>
               <th scope="col">User Company</th>
-              <th scope="col">User Projects Count</th>
+              <th scope="col">Project Names</th>
               <th scope="col">User Manager</th>
             </tr>
           </thead>
@@ -38,7 +38,7 @@
                       <td>@item.userContactNo</td>
                       <td>@companyName[userList.IndexOf(item)]</td>
                       <td>
-                          <table>
+                          <table class="project-table">
                               @{var projectLinqQuery = from value in projectList where value.projectId == item.projectId select new {item.Id,value.projectName };}
                               @foreach (var projName in projectLinqQuery)
                              {
@@ -87,9 +87,11 @@
         background-color: lightblue;
         padding:10px;
     }
-    .table td{
+    .table{
         border-top:none;
-
+    }
+    .project-table td{
+        border-top:none;
     }
 </style>
 

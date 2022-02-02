@@ -132,14 +132,13 @@ using ProjectManagementApp.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 39 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\UpdateUser.razor"
+#line 35 "C:\Users\User 01\Desktop\ProjectManagement\ProjectManagementApp\ProjectManagementApp\Pages\UserCrud\UpdateUser.razor"
        
     public User user = new User();
     public Developer developer = new Developer();
 
     [Parameter]
     public string userID { get; set; }
-    public string newUserName { get; set; }
     public string newUserEmail { get; set; }
     public string newUserContactNo { get; set; }
 
@@ -149,7 +148,6 @@ using ProjectManagementApp.Services;
     protected async override Task OnInitializedAsync()
     {
         developer = UserService.GetDev(userID);
-        newUserName = developer.UserName;
         newUserEmail = developer.Email;
         newUserContactNo = developer.userContactNo;
     }
